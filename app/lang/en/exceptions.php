@@ -9,4 +9,10 @@ return array(
     'UserExistsException' => 'User with this login already exists.',
     'GroupNotFoundException' => 'Group was not found.',
   ),
+  'Opauth' => array(
+    'callback' => 'Unsupported callback_transport.',
+    'error' => 'Authentication error: Opauth returns error auth response.'
+    'missing' => 'Invalid auth response: Missing key auth response components.',
+    'reason'  => 'Invalid auth response: :reason',
+  );
 );

@@ -21,9 +21,19 @@ $config = array(
 	'callback_url' => '{path}done',
 
 /**
+ * Callback transport, for sending of $auth response
+ *
+ * 'session': Default. Works best unless callback_url is on a different domain than Opauth
+ * 'post'   : Works cross-domain, but relies on availability of client-side JavaScript.
+ * 'get'    : Works cross-domain, but may be limited or corrupted by browser URL length limit
+ *            (eg. IE8/IE9 has 2083-char limit)
+ */
+	//'callback_transport' => 'session',
+
+/**
  * A random string used for signing of $auth response.
  */
-	'security_salt' => 'LDFmiilYf8Fyw5W10rx4W1KsVrieQCnpBzzpTBWA5vJidQKDx8pMJbmw28R1C4m',
+	'security_salt' => '123LDFmiilYf8Fyw5W10rx4W1KsVrieQCnpBzzpTBWA5vJidQKDx8pMJbmw28R1C4m',
 
 /**
  * Strategy

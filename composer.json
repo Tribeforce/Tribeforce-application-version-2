@@ -19,6 +19,7 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
+			"app/vendor/opauth/opauth/lib/Opauth",
 			"app/tests/TestCase.php"
 		]
 	},

@@ -15,4 +15,5 @@ return array(
     'admin' => 'Administer',
   ),
   'user_created' => "The user :user has been created.",
+  'login_succes' => 'You have been logged in successfully.'
 );
