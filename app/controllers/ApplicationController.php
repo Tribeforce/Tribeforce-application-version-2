@@ -221,6 +221,8 @@ class ApplicationController extends BaseController {
     }
 
     dpm($response);
+
+    return Redirect::to('/');
   }
 
 
