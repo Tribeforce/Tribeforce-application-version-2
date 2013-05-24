@@ -1,0 +1,9 @@
+// Box shadow down
+@mixin shadow {
+  @include box-shadow(0px 1px 1px 1px rgba(0,0,0, .3));
+}
+
+// Gradient
+@mixin gradient($top, $bottom) {
+  @include background-image(linear-gradient(top, $top 0%, $bottom 100%));
+}

@@ -1,0 +1,266 @@
+// Global Foundation Settings
+@import "settings";
+
+// Comment out this import if you don't want to use normalize
+@import "normalize";
+
+// Comment out this import if you are customizing you imports below
+@import "foundation";
+
+@import "compass/css3";     // Use one CSS3 mixin instead of multiple vendor prefixes.
+
+@import "custom";
+
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below. You must uncomment the following if customizing
+
+// @import "foundation/components/global"; // *always required
+// @import "foundation/components/grid";
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+// @import "foundation/components/type";
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms"; // *requires components/buttons
+// @import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+// @import "foundation/components/button-groups"; // *requires components/buttons
+// @import "foundation/components/dropdown-buttons"; // *requires components/buttons
+// @import "foundation/components/split-buttons"; // *requires components/buttons
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+// @import "foundation/components/top-bar";  // *requires components/grid
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+// @import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
+// @import "foundation/components/panels";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
+
+
+/*******************************************************************************
+Global Styles
+*******************************************************************************/
+
+/* Set box-sizing globally to handle padding and border widths */
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+html,
+body {
+  font-size: $base-font-size;
+}
+
+/* Default body styles */
+body {
+  background: $body-bg;
+  color: $body-font-color;
+  padding: 0;
+  margin: 0;
+  font-family: $body-font-family;
+  font-weight: $body-font-weight;
+  font-style: $body-font-style;
+  line-height: 1;
+  position: relative;
+}
+
+/* Override outline from normalize, we don't like it */
+a:focus {
+  outline: none;
+}
+
+/* Grid Defaults to get images and embeds to work properly */
+img,
+object,
+embed {
+  max-width: 100%; height: auto;
+}
+
+object,
+embed {
+  height: 100%;
+}
+
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+#map_canvas,
+.map_canvas {
+  img,
+  embed,
+  object {
+    max-width: none !important;
+  }
+}
+
+/* Miscellaneous useful HTML classes */
+.left         { float: left !important; }
+.right        { float: right !important; }
+.text-left    { text-align: left !important; }
+.text-right   { text-align: right !important; }
+.text-center  { text-align: center !important; }
+.text-justify { text-align: justify !important; }
+.hide         { display: none; }
+
+/* Font smoothing */
+/* Antialiased font smoothing works best for light text on a dark background. */
+/* Apply to single elements instead of globally to body. */
+/* Note this only applies to webkit-based desktop browsers on the Mac. */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Get rid of gap under images by making them display: inline-block; by default */
+img {
+  display: inline-block;
+}
+
+/* Make sure textarea takes on height automatically */
+textarea {
+  height: auto;
+  min-height: 50px;
+}
+
+/* Make select elements 100% width by default */
+select {
+  width: 100%;
+}
+
+
+/*******************************************************************************
+Custom Styles
+*******************************************************************************/
+#header {
+  min-height: $icon_size;
+  margin: $gutter 0;
+
+
+  a {
+    text-indent: -99999px;
+    border-bottom: 0;
+    background: $sprites;
+    height: $icon_size;
+    width: $icon_size;
+  }
+  .greeting {
+//    max-width: 150px;
+  }
+  .settings {
+    background-position: -60px -298px;
+  }
+  .logout {
+    background-position: -60px -345px;
+  }
+}
+
+
+#messages {
+  color: $white;
+  margin-bottom: emCalc($gutter);
+  .status {
+    @include gradient($green_light, $green_dark);
+    border: 1px solid darken($green_light, 20%);
+  }
+  .warning {
+    @include gradient($yellow_light, $yellow_dark);
+    border: 1px solid darken($yellow_light, 20%);
+    color: $black;
+  }
+  .error {
+    @include gradient($red_light, $red_dark);
+    border: 1px solid darken($red_light, 20%);
+  }
+  .help {
+    @include gradient($orange_light, $orange_dark);
+    border: 1px solid darken($orange_light, 20%);
+  }
+  li {
+    list-style: none;
+  }
+
+  ul {
+    padding: emCalc($gutter/2) emCalc($gutter);
+    margin: 0;
+  }
+}
+
+#login {
+  .header {
+    margin-bottom: emCalc($gutter);
+  }
+}
+
+#dashboard {
+  #menu {
+    li {
+      list-style: none;
+
+      .container {
+        background-repeat: no-repeat;
+        @include shadow;
+        @include border-radius;
+        @include gradient($grey_light, $grey_medium);
+        @include transition(background-position 0.2s ease-in);
+        &:hover {
+          background-position-y: 200px;
+        }
+      }
+
+      a {
+        background: $sprites;
+        width: 184px;
+        display: block;
+        margin: auto;
+        color: $orange_dark;
+        font-size: 1.5em;
+        padding: 140px 0 0 0;
+        height: 180px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      &.feedback a {
+        background-position: -784px -325px;
+        &:hover {
+          background-position: -977px -325px;
+        }
+      }
+      &.roles a {
+        background-position: -780px -508px;
+        &:hover {
+          background-position: -973px -508px;
+        }
+      }
+      &.recruit a {
+        background-position: -782px -149px;
+        &:hover {
+          background-position: -973px -149px;
+        }
+      }
+      &.admin a {
+        background: url(../images/admin_grey.png) no-repeat center 5px;
+        background-size: 135px;
+        &:hover {
+          background-image: url(../images/admin_orange.png);
+        }
+      }
+    }
+  }
+}
