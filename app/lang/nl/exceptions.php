@@ -14,5 +14,6 @@ return array(
     'error' => 'Authentificatie fout: Opauth geeft error auth response.',
     'missing' => 'Ongeldig auth antwoord: Delen van key auth antwoord ontbreken.',
     'reason'  => 'Ongeldig auth antwoord: :reason',
+    'not_found' => 'Sorry, maar deze :provider account is niet gelinkt met ons',
   ),
 );

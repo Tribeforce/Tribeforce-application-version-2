@@ -182,8 +182,6 @@ class ApplicationController extends BaseController {
     }
 
 
-dpm($response);
-
     /**
      * Check if it's an error callback
      */
@@ -204,29 +202,38 @@ dpm($response);
         Messages::error(trans('exceptions.Opauth.missing'));
       } elseif (!$Opauth->validate(sha1(print_r($response['auth'], true)),
                      $response['timestamp'], $response['signature'], $reason)) {
-        Messages::error(trans('exceptions.Opauth.reason', array('reason' => $reason)));
+        Messages::error(trans('exceptions.Opauth.reason',
+                                                   array('reason' => $reason)));
       } else {
-        Messages::error(trans('ui.login_succes'));
+        // LOGGED IN
+        $facebook_id = $response['auth']['uid'];
+        $provider = $response['auth']['provider'];
 
         // Check if the user is logged in.
         // If he's logged in, we have a connection request
         // If he's not logged in, we have a login request
-
         if(Sentry::check()) { // Connection request
-          $user = Sentry::getUser();
+          $user = User::current();
+          $user->facebook_id = $facebook_id;
+          $user->save();
+          Messages::status(trans('ui.connection_succes',
+                                                array('service' => $provider)));
         } else { // Login request
+          // If a user with the facebook_id exists, we log him in
+          $user = User::where('facebook_id', '=', $facebook_id);
+          if(empty($user)) {
+            Messages::status(trans('exceptions.Opauth.not_found'),
+                                                array('provider' => $provider));
+          } else {
+            Messages::status(trans('ui.login_succes'));
+            Sentry::login($user, false);
+          }
 
         }
         dpm('Logged in');  // TODO: The message doesn't show. The session seems fucked up
 
-
-
-
         return Redirect::to('/');
 
-        /**
-         * It's all good. Go ahead with your application-specific authentication logic
-         */
       }
     }
 

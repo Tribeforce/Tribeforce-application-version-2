@@ -8,5 +8,6 @@ return array(
   'register'              => 'Registreer',
   'edit'                  => 'Wijzig',
   'save'                  => 'Bewaar',
-  'facebook'              => 'Verbind met Facebook',
+  'fb_connect'            => 'Verbind met Facebook',
+  'fb_login'              => 'Login met Facebook',
 );
