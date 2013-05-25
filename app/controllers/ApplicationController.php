@@ -143,7 +143,7 @@ class ApplicationController extends BaseController {
   }
 
   // The Facebook OAuth path
-  public function forgetFacebook() {
+  public function getForgetFacebook() {
     $user = User::current();
     $user->facebook_id = null;
     $user->save;
