@@ -146,7 +146,7 @@ class ApplicationController extends BaseController {
   public function getForgetFacebook() {
     $user = User::current();
     $user->facebook_id = null;
-    $user->save;
+    $user->save();
     Redirect::back();
   }
 
