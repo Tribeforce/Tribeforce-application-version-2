@@ -220,10 +220,13 @@ class ApplicationController extends BaseController {
                                                 array('service' => $provider)));
         } else { // Login request
           // If a user with the facebook_id exists, we log him in
-          $user = User::where('facebook_id', '=', $facebook_id);
+          $user = User::where('facebook_id', '=', $facebook_id)->first();
           if(empty($user)) {
             Messages::status(trans('exceptions.Opauth.not_found'),
                                                 array('provider' => $provider));
+            return View::make('login')
+                              ->with(array('title' => trans('ui.title_login')));
+
           } else {
             Messages::status(trans('ui.login_succes'));
             Sentry::login($user, false);
