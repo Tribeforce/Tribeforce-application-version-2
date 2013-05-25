@@ -147,7 +147,7 @@ class ApplicationController extends BaseController {
     $user = User::current();
     $user->facebook_id = null;
     $user->save();
-    Redirect::back();
+    return Redirect::back();
   }
 
   /**
@@ -226,6 +226,7 @@ class ApplicationController extends BaseController {
           $user->save();
           Messages::status(trans('ui.connection_succes',
                                                 array('service' => $provider)));
+          return Redirect::back();
         } else { // Login request
           // If a user with the facebook_id exists, we log him in
           $user = User::where('facebook_id', '=', $facebook_id)->first();
