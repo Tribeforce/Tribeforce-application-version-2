@@ -11,4 +11,6 @@ use Illuminate\View\Environment;
 |
 */
 
+Route::resource('users', 'UsersController');
+
 Route::controller('/', 'ApplicationController');

@@ -15,5 +15,9 @@ return array(
     'admin' => 'Beheer',
   ),
   'user_created' => "De gebruiker :user is aangemaakt",
-  'login_succes' => 'U bent succesvol ingelogd.'
+  'login_succes' => 'U bent succesvol ingelogd.',
+  'users' => array(
+    'title_show' => 'Gebruiker :name',
+    'title_edit' => 'Pas :name aan',
+  ),
 );

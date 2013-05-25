@@ -6,27 +6,17 @@ class ApplicationController extends BaseController {
     $this->beforeFilter('csrf', array('on' => 'post'));
   }
 
-  private function getMenu() {
-    return array(
-      'feedback',
-      'roles',
-      'recruit',
-      'admin',
-    );
-  }
 
   // Show the Dashboard page
   public function getIndex() {
-    return View::make('dashboard', array(
-      'title' => trans('ui.title_dashboard'),
-      'menu' => $this->getMenu(),
-    ));
+    return View::make('dashboard')
+                 ->with(array('title' => trans('ui.title_dashboard')));
   }
 
   // Handle the login
   public function getLogin() {
     // TODO: What to do if the user is already logged in
-    return View::make('login', array('title' => trans('ui.title_login')));
+    return View::make('login')->with(array('title' => trans('ui.title_login')));
   }
 
 
@@ -100,7 +90,8 @@ class ApplicationController extends BaseController {
 
   // Show the registration page
   public function getRegister() {
-    return View::make('register', array('title' => trans('ui.title_register')));
+    return View::make('register')
+                 ->with(array('title' => trans('ui.title_register')));
   }
 
   // Handle the registration form
@@ -163,7 +154,7 @@ class ApplicationController extends BaseController {
    *    (eg. registers or logs user in to your site, save auth data onto database, etc.)
    *
    */
-  public function getDone() {
+  public function anyDone() {
     define('CONF_FILE', app_path().'/config/opauth.conf.php');
     require CONF_FILE;
     $Opauth = new Opauth( $config, false );
@@ -175,7 +166,7 @@ class ApplicationController extends BaseController {
 
     switch($Opauth->env['callback_transport']) {
       case 'session':
-        session_start();
+        if(session_id() == '') session_start();
         $response = $_SESSION['opauth'];
         unset($_SESSION['opauth']);
         break;
@@ -186,15 +177,18 @@ class ApplicationController extends BaseController {
         $response = unserialize(base64_decode( $_GET['opauth'] ));
         break;
       default:
-        Messages::error(trans('exceptions.oauth.callback'));
+        Messages::error(trans('exceptions.Opauth.callback'));
         break;
     }
+
+
+dpm($response);
 
     /**
      * Check if it's an error callback
      */
     if (array_key_exists('error', $response)) {
-     Messages::error(trans('exceptions.oauth.error'));
+     Messages::error(trans('exceptions.Opauth.error'));
     }
 
     /**
@@ -207,12 +201,28 @@ class ApplicationController extends BaseController {
       if (empty($response['auth']) || empty($response['timestamp'])
       || empty($response['signature']) || empty($response['auth']['provider'])
       || empty($response['auth']['uid'])) {
-        Messages::error(trans('exceptions.oauth.missing'));
+        Messages::error(trans('exceptions.Opauth.missing'));
       } elseif (!$Opauth->validate(sha1(print_r($response['auth'], true)),
                      $response['timestamp'], $response['signature'], $reason)) {
-        Messages::error(trans('exceptions.oauth.reason', array('reason' => $reason)));
+        Messages::error(trans('exceptions.Opauth.reason', array('reason' => $reason)));
       } else {
         Messages::error(trans('ui.login_succes'));
+
+        // Check if the user is logged in.
+        // If he's logged in, we have a connection request
+        // If he's not logged in, we have a login request
+
+        if(Sentry::check()) { // Connection request
+          $user = Sentry::getUser();
+        } else { // Login request
+
+        }
+        dpm('Logged in');  // TODO: The message doesn't show. The session seems fucked up
+
+
+
+
+        return Redirect::to('/');
 
         /**
          * It's all good. Go ahead with your application-specific authentication logic
@@ -220,9 +230,8 @@ class ApplicationController extends BaseController {
       }
     }
 
-    dpm($response);
+    return View::make('login')->with(array('title' => 'dffdgdgdgsdg'));
 
-    return Redirect::to('/');
   }
 
 

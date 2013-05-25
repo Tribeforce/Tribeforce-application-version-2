@@ -1,4 +1,4 @@
-@extends('basic')
+@extends('layouts.basic')
 
 @section('body')
 <div id="login">
@@ -16,7 +16,7 @@
         @include('form.field', array('type' => 'text', 'name' => 'email'))
         @include('form.field', array('type' => 'password', 'name' =>'password'))
         @include('form.field', array('type' => 'password', 'name' =>'password_confirmation'))
-        {{ HTML::linkAction('ApplicationController@getLogin',
+        {{ link_to_ction('ApplicationController@getLogin',
                      trans('forms.login'), null, array('class' => 'left')) }}
         @include('form.field', array('type' => 'submit', 'name' => trans('forms.register')))
       {{ Form::close() }}

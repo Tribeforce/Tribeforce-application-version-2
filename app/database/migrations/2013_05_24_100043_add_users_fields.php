@@ -13,7 +13,7 @@ class AddUsersFields extends Migration {
   {
     Schema::table('users', function($table)
     {
-      $table->binary('settings');
+      $table->binary('settings')->after('last_name');
     });
   }
 

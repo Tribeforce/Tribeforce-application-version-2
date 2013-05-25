@@ -14,5 +14,5 @@ return array(
     'error' => 'Authentication error: Opauth returns error auth response.'
     'missing' => 'Invalid auth response: Missing key auth response components.',
     'reason'  => 'Invalid auth response: :reason',
-  );
+  ),
 );

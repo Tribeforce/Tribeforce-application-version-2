@@ -17,6 +17,16 @@ $classes = $errors->has($name) ? "$classes error" : $errors;
 $classes = "form-field type-$type name-$name".$classes;
 $show_label = isset($sl) && !$sl ? false : true;
 if($type === 'submit') $show_label = false;
+
+// Set the default value
+$old = Input::old($name);
+if(!empty($old)) {
+  $default = $old;
+} elseif(isset($d->$name)) {
+  $default = $d->$name;
+} else {
+  $default = null;
+}
 ?>
 
 <div class="{{ $classes }}">
@@ -27,8 +37,7 @@ if($type === 'submit') $show_label = false;
 
   <?php // Field ?>
   @if($type === 'text')
-    {{ Form::$type($name, Input::old($name),
-                                array('placeholder' => trans("forms.$name"))) }}
+    {{ Form::$type($name,$default,array('placeholder'=>trans("forms.$name"))) }}
   @elseif($type === 'password')
     {{ Form::$type($name) }}
   @elseif($type === 'submit')

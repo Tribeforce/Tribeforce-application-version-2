@@ -46,6 +46,21 @@ function input_rules($input, $rules) {
 
 
   /**
+   * Get the name of the calling function
+   *
+   * @return string The name of the calling function
+   */
+  function get_caller() {
+    // TODO: This is performance wise VERY heavy
+    //       Probably this should not be used. We should pass the functionname
+    //       as parameter where used (__FUNCTION__
+    $callers = debug_backtrace(false);
+    $caller = $callers[2]['function'];
+    return $caller;
+  }
+
+
+  /**
    * This function is for development purposes
    * It dumps a variable to the message area and in the Log
    *
