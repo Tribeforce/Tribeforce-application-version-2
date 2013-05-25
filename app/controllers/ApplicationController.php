@@ -186,7 +186,7 @@ class ApplicationController extends BaseController {
      * Check if it's an error callback
      */
     if (array_key_exists('error', $response)) {
-     Messages::error(trans('exceptions.Opauth.error'));
+      Messages::error(trans('exceptions.Opauth.error'));
     }
 
     /**
@@ -225,22 +225,19 @@ class ApplicationController extends BaseController {
             Messages::status(trans('exceptions.Opauth.not_found'),
                                                 array('provider' => $provider));
             return View::make('login')
-                              ->with(array('title' => trans('ui.title_login')));
+                         ->with(array('title' => trans('ui.title_login')));
 
           } else {
             Messages::status(trans('ui.login_succes'));
             Sentry::login($user, false);
+            return View::make('dashboard')
+                         ->with(array('title' => trans('ui.title_dashboard')));
           }
-
         }
-        dpm('Logged in');  // TODO: The message doesn't show. The session seems fucked up
-
-        return Redirect::to('/');
-
       }
     }
 
-    return View::make('login')->with(array('title' => 'dffdgdgdgsdg'));
+    return View::make('login')->with(array('title' => trans('ui.title_login')));
 
   }
 
