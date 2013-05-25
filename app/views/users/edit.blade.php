@@ -11,10 +11,11 @@
   @include('form.field', array('type' => 'text', 'name' => 'email'))
   @include('form.field', array('type' => 'password', 'name' =>'password'))
   @include('form.field', array('type' => 'password', 'name' =>'password_confirmation'))
-  @if( ! $d->facebook_id) {
+  @if( ! $d->facebook_id)
     {{ link_to_action('ApplicationController@getFacebook', trans('forms.fb_connect'), null, array('class' => 'left')) }}
+  @else
+    {{ link_to_action('ApplicationController@forgetFacebook', trans('forms.fb_forget'), null, array('class' => 'left')) }}
   @endif
-  }
   @include('form.field', array('type' => 'submit', 'name' => trans('forms.save')))
 </div>
 @endsection

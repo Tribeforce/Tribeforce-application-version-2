@@ -142,6 +142,14 @@ class ApplicationController extends BaseController {
     $Opauth = new Opauth( $config );
   }
 
+  // The Facebook OAuth path
+  public function forgetFacebook() {
+    $user = User::current();
+    $user->facebook_id = null;
+    $user->save;
+    Redirect::back();
+  }
+
   /**
    * Callback for Opauth
    *

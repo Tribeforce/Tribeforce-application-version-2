@@ -10,4 +10,5 @@ return array(
   'save'                  => 'Bewaar',
   'fb_connect'            => 'Verbind met Facebook',
   'fb_login'              => 'Login met Facebook',
+  'fb_forget'             => 'Je account is losgekoppeld van Facebook.',
 );
