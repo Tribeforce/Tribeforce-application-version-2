@@ -144,9 +144,10 @@ class ApplicationController extends BaseController {
 
   // The Facebook OAuth path
   public function getForgetFacebook() {
-    $user = User::current();
+    $user = Sentry::getUser();
     $user->facebook_id = null;
     $user->save();
+    Messages::status(trans('ui.fb_forget'), array('provider' => $provider));
     return Redirect::back();
   }
 
@@ -216,12 +217,12 @@ class ApplicationController extends BaseController {
         // LOGGED IN
         $facebook_id = $response['auth']['uid'];
         $provider = $response['auth']['provider'];
-
+dpm($response);
         // Check if the user is logged in.
         // If he's logged in, we have a connection request
         // If he's not logged in, we have a login request
         if(Sentry::check()) { // Connection request
-          $user = User::current();
+          $user = Sentry::getUser();
           $user->facebook_id = $facebook_id;
           $user->save();
           Messages::status(trans('ui.connection_succes',
@@ -231,11 +232,11 @@ class ApplicationController extends BaseController {
           // If a user with the facebook_id exists, we log him in
           $user = User::where('facebook_id', '=', $facebook_id)->first();
           if(empty($user)) {
-            Messages::status(trans('exceptions.Opauth.not_found'),
+            Messages::error(trans('exceptions.Opauth.not_found'),
                                                 array('provider' => $provider));
-            return View::make('login')
-                         ->with(array('title' => trans('ui.title_login')));
-
+            return Redirect::back();
+//            return View::make('login')
+//                         ->with(array('title' => trans('ui.title_login')));
           } else {
             Messages::status(trans('ui.login_succes'));
             Sentry::login($user, false);

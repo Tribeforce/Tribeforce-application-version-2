@@ -46,11 +46,9 @@ if(!empty($old)) {
 
   <?php // Error message ?>
   @if($errors->has($name))
-  <div class="messages">
     @foreach($errors->get($name) as $message)
-    <li>{{ $message }}</li>
+    <small>{{ $message }}</small>
     @endforeach
-  </div>
   @endif
 
 </div>

@@ -81,9 +81,12 @@ function dpm($var) {
  * @param object $object
  * @return object
  */
+/*
 function cast($class, $object) {
   return unserialize(preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen($class) . ':"' . $class . '"', serialize($object)));
 }
+*/
+
 
 /******************
 PRIVATE

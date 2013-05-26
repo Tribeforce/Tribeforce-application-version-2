@@ -17,6 +17,7 @@ return array(
   'user_created' => "De gebruiker :user is aangemaakt",
   'login_succes' => 'U bent succesvol ingelogd.',
   'connection_succes' => 'Deze account is nu verbonden met :service',
+  'fb_forget' => 'Deze account is nu losgekoppeld van Facebook',
   'users' => array(
     'title_show' => 'Gebruiker :name',
     'title_edit' => 'Pas :name aan',

@@ -76,11 +76,11 @@ class User extends SentryUserModel {
       array_forget($settings, $key);
       $this->setSettings($settings);
     }
-
+/*
     public static function current() {
       $user = Sentry::getUser();
       $user = cast('User', $user);
       return $user;
     }
-
+*/
 }

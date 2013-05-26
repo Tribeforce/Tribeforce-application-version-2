@@ -6,11 +6,12 @@ $messages = Messages::get();  // NULL if it doesn't exist
 <div id="messages" class="row">
   <div class="columns">
     @foreach($messages as $type => $typed_messages)
-      <ul class="{{ $type }}">
-        @foreach($typed_messages as $message)
-          <li>{{ $message }}</li>
-        @endforeach
-      </ul>
+      @foreach($typed_messages as $message)
+        <div data-alert class="{{$type}}">
+          {{ $message }}
+          {{ link_to('#', '&times;', array('class' => 'close')) }}
+        </div>
+      @endforeach
     @endforeach
   </div>
 </div>

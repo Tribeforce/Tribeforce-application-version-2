@@ -172,38 +172,39 @@ Custom Styles
 
 
 #messages {
-  color: $white;
-  margin-bottom: emCalc($gutter);
   .status {
-    @include gradient($green_light, $green_dark);
-    border: 1px solid darken($green_light, 20%);
+    @include alert($green_light);
   }
   .warning {
-    @include gradient($yellow_light, $yellow_dark);
-    border: 1px solid darken($yellow_light, 20%);
-    color: $black;
+    @include alert($yellow_light);
   }
   .error {
-    @include gradient($red_light, $red_dark);
-    border: 1px solid darken($red_light, 20%);
+    @include alert($red_light);
   }
   .help {
-    @include gradient($orange_light, $orange_dark);
-    border: 1px solid darken($orange_light, 20%);
+    @include alert($orange_light);
   }
-  li {
-    list-style: none;
+  .close {
+    @include alert-close;
   }
 
-  ul {
-    padding: emCalc($gutter/2) emCalc($gutter);
-    margin: 0;
-  }
 }
+
+
+
+/*******************************************************************************
+PAGES
+*******************************************************************************/
 
 #login {
   .header {
     margin-bottom: emCalc($gutter);
+  }
+  .row {
+    width: 50%;
+    min-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 

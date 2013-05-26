@@ -20,7 +20,7 @@ class Messages {
     if(!empty($message) && in_array($type , self::$types)) {
       $messages = Session::get('messages');
       $messages[$type][] = $message;
-      Session::flash('messages', $messages);
+      Session::put('messages', $messages);
     } else {
       throw new \InvalidArgumentException('The second argument is invalid.');
     }
