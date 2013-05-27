@@ -13,10 +13,10 @@ class AddUsersFields extends Migration {
   {
     Schema::table('users', function($table)
     {
-      $table->binary('settings')->after('last_name');
-      $table->integer('facebook_id')->unique()->unsigned()->after('email');
-      $table->integer('linkedin_id')->unique()->unsigned()->after('email');
-      $table->integer('google_id')->unique()->unsigned()->after('email');
+      $table->text('settings')->after('last_name');
+      $table->integer('facebook_id')->nullable()->unique()->unsigned()->after('email');
+      $table->integer('linkedin_id')->nullable()->unique()->unsigned()->after('email');
+      $table->integer('google_id')->nullable()->unique()->unsigned()->after('email');
     });
   }
 

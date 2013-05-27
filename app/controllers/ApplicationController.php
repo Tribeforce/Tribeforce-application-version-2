@@ -15,17 +15,18 @@ class ApplicationController extends BaseController {
 
   // Handle the login
   public function getLogin() {
-    // TODO: What to do if the user is already logged in
-    return View::make('login')->with(array('title' => trans('ui.title_login')));
+    if(Sentry::check()) {
+      Messages::error(trans('ui.logged_in'));
+      return Redirect::to('/');
+    } else {
+      return View::make('login')->with(array('title'=>trans('ui.title_login')));
+    }
   }
-
-
 
   // Handle the login form data
   public function postLogin() {
     // Validate the input
     $validator = User::getValidator(Input::all());
-
     if ($validator->fails()) {
       return Redirect::to('login')->withInput()->withErrors($validator);
     }
@@ -45,13 +46,6 @@ class ApplicationController extends BaseController {
       return Redirect::intended('/');
 
     }
-/* This can never happen because of the validation before
-    catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-        echo 'Login field is required.';
-    } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-        echo 'Password field is required.';
-    }
-*/
     catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
       Messages::error(trans('exceptions.Sentry.UserNotFoundException'));
     } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
@@ -108,28 +102,15 @@ class ApplicationController extends BaseController {
       $user = Sentry::register(array(
         'email' => Input::get('email'),
         'password' => Input::get('password'),
-      ), true);
+      ));
 
-      Messages::status('ui.user_created', array('user' => $user->email));
-
-      // Find the group using the group id
-//TODO      $adminGroup = Sentry::getGroupProvider()->findById(1);
-
-      // Assign the group to the user
-//TODO      $user->addGroup($adminGroup);
+      Messages::status(trans('ui.user_created', array('user' => $user->email)));
 
     } catch (Cartalyst\Sentry\Users\UserExistsException $e) {
       Messages::error(trans('exceptions.Sentry.UserExistsException'));
     } catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
       Messages::error(trans('exceptions.Sentry.GroupNotFoundException'));
     }
-/* This can never happen because of the validation before
-    catch (Cartalyst\Sentry\Users\LoginRequiredException $e) {
-        echo 'Login field is required.';
-    } catch (Cartalyst\Sentry\Users\PasswordRequiredException $e) {
-        echo 'Password field is required.';
-    }
-*/
 
     return Redirect::to('/');
 
@@ -147,7 +128,7 @@ class ApplicationController extends BaseController {
     $user = Sentry::getUser();
     $user->facebook_id = null;
     $user->save();
-    Messages::status(trans('ui.fb_forget'), array('provider' => $provider));
+    Messages::status(trans('ui.fb_forget'), array('provider' => "Facebook"));
     return Redirect::back();
   }
 
@@ -195,7 +176,8 @@ class ApplicationController extends BaseController {
      * Check if it's an error callback
      */
     if (array_key_exists('error', $response)) {
-      Messages::error(trans('exceptions.Opauth.error'));
+      Messages::error(trans('exceptions.Opauth.error',
+                                              array('provider' => 'Facebook')));
     }
 
     /**
@@ -217,7 +199,7 @@ class ApplicationController extends BaseController {
         // LOGGED IN
         $facebook_id = $response['auth']['uid'];
         $provider = $response['auth']['provider'];
-dpm($response);
+
         // Check if the user is logged in.
         // If he's logged in, we have a connection request
         // If he's not logged in, we have a login request
@@ -226,7 +208,7 @@ dpm($response);
           $user->facebook_id = $facebook_id;
           $user->save();
           Messages::status(trans('ui.connection_succes',
-                                                array('service' => $provider)));
+                                                array('provider' => $provider)));
           return Redirect::back();
         } else { // Login request
           // If a user with the facebook_id exists, we log him in

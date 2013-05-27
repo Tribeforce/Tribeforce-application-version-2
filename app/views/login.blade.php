@@ -3,7 +3,7 @@
 @section('body')
 <div id="login">
   <div class="row header">
-    <div class="columns">
+    <div class="columns small-10 small-centered large-6 large-centered">
       {{ HTML::image('images/logo.png', 'Tribeforce logo') }}
     </div>
   </div>
@@ -11,10 +11,11 @@
   @include('messages')
 
   <div class="row">
-    <div class="columns">
+    <div class="columns small-10 small-centered large-6 large-centered">
       {{ Form::open(array('url' => 'login')) }}
         @include('form.field', array('type' => 'text', 'name' => 'email'))
         @include('form.field', array('type' => 'password', 'name'=>'password'))
+        @include('form.field', array('type' => 'switch', 'name' => 'remember', 'sl' => false))
         {{ link_to_action('ApplicationController@getFacebook',
                      trans('forms.fb_login'), null, array('class' => 'left button secondary')) }}
         {{ link_to_action('ApplicationController@getRegister',

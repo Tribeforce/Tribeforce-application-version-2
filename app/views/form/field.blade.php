@@ -12,9 +12,9 @@ The label will be taken from the language file lang/<language>/forms.php
 */
 
 // Preppare variables
-$classes = isset($classes) ? " $classes" : '';
-$classes = $errors->has($name) ? "$classes error" : $errors;
-$classes = "form-field type-$type name-$name".$classes;
+$classes = isset($classes) ? $classes : '';
+$classes = "form-field type-$type name-$name $classes";
+$classes = $errors->has($name) ? "$classes error" : $classes;
 $show_label = isset($sl) && !$sl ? false : true;
 if($type === 'submit') $show_label = false;
 
@@ -27,6 +27,13 @@ if(!empty($old)) {
 } else {
   $default = null;
 }
+
+if($type === 'switch') {
+  $on  = isset($on)  ? $on  : trans('forms.on');
+  $off = isset($off) ? $off : trans('forms.off');
+  $checked = isset($checked) ? $checked : $default;
+}
+
 ?>
 
 <div class="{{ $classes }}">
@@ -40,6 +47,14 @@ if(!empty($old)) {
     {{ Form::$type($name,$default,array('placeholder'=>trans("forms.$name"))) }}
   @elseif($type === 'password')
     {{ Form::$type($name) }}
+  @elseif($type === 'switch')
+    <div class="switch small">
+    {{ Form::radio($name, 0, !$checked) }}
+    {{ Form::label($name, $off) }}
+    {{ Form::radio($name, 1, $checked) }}
+    {{ Form::label($name.'1', $on) }}
+    <span></span>
+    </div>
   @elseif($type === 'submit')
     {{ Form::$type($name, array('class' => 'button radius right')) }}
   @endif

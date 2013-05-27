@@ -55,6 +55,7 @@ $white: #fff;
 // $success-color: #5da423;
 
 $primary-color: $orange_dark;
+$success-color: $green_light;
 
 
 // Sprites
@@ -1113,6 +1114,8 @@ $global-radius: 4px;
 // $switch-paddle-transition-ease: ease-out;
 // $switch-positive-color: lighten($success-color, 50%);
 // $switch-negative-color: #f5f5f5;
+$switch-positive-color: $green_light;
+$switch-negative-color: $red_light;
 
 // Outline Style for tabbing through switches
 

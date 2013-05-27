@@ -16,6 +16,7 @@ App::before(function($request)
   App::setLocale('nl');
   Config::set('tf.version', '2.0');
   View::share('menu', Menu::get());
+  View::share('current_user', Sentry::getUser());
 });
 
 

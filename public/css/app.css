@@ -2437,13 +2437,13 @@ button.secondary:hover, button.secondary:focus, .button.secondary:hover, .button
 }
 /* line 176, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.success, .button.success {
-  background-color: #5da423;
-  border-color: #457a1a;
+  background-color: #7add6c;
+  border-color: #55d343;
   color: white;
 }
 /* line 121, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
-  background-color: #457a1a;
+  background-color: #55d343;
 }
 /* line 132, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.success:hover, button.success:focus, .button.success:hover, .button.success:focus {
@@ -2549,8 +2549,8 @@ button.disabled.secondary:hover, button.disabled.secondary:focus, button[disable
 }
 /* line 189, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.disabled.success, button[disabled].success, .button.disabled.success, .button[disabled].success {
-  background-color: #5da423;
-  border-color: #457a1a;
+  background-color: #7add6c;
+  border-color: #55d343;
   color: white;
   cursor: default;
   opacity: 0.6;
@@ -2559,7 +2559,7 @@ button.disabled.success, button[disabled].success, .button.disabled.success, .bu
 }
 /* line 121, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  background-color: #457a1a;
+  background-color: #55d343;
 }
 /* line 132, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
@@ -2567,7 +2567,7 @@ button.disabled.success:hover, button.disabled.success:focus, button[disabled].s
 }
 /* line 145, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.disabled.success:hover, button.disabled.success:focus, button[disabled].success:hover, button[disabled].success:focus, .button.disabled.success:hover, .button.disabled.success:focus, .button[disabled].success:hover, .button[disabled].success:focus {
-  background-color: #5da423;
+  background-color: #7add6c;
 }
 /* line 190, ../../app/theme/sass/foundation/components/_buttons.scss */
 button.disabled.alert, button[disabled].alert, .button.disabled.alert, .button[disabled].alert {
@@ -3550,7 +3550,7 @@ form.custom .custom.disabled {
 }
 /* line 79, ../../app/theme/sass/foundation/components/_split-buttons.scss */
 .split.button.success span {
-  border-left-color: #396516;
+  border-left-color: #43cd2f;
 }
 /* line 156, ../../app/theme/sass/foundation/components/_split-buttons.scss */
 .split.button.tiny {
@@ -4493,11 +4493,11 @@ form.custom .custom.disabled {
 }
 /* line 262, ../../app/theme/sass/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a.button.success {
-  background: #5da423;
+  background: #7add6c;
 }
 /* line 264, ../../app/theme/sass/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a.button.success:hover {
-  background: #457a1a;
+  background: #55d343;
 }
 /* line 268, ../../app/theme/sass/foundation/components/_top-bar.scss */
 .top-bar-section ul li > a.button.alert {
@@ -5623,8 +5623,8 @@ form.custom .custom.disabled {
 }
 /* line 102, ../../app/theme/sass/foundation/components/_alert-boxes.scss */
 .alert-box.success {
-  background-color: #5da423;
-  border-color: #457a1a;
+  background-color: #7add6c;
+  border-color: #55d343;
   color: white;
 }
 /* line 103, ../../app/theme/sass/foundation/components/_alert-boxes.scss */
@@ -5765,7 +5765,7 @@ kbd {
 }
 /* line 81, ../../app/theme/sass/foundation/components/_labels.scss */
 .label.success {
-  background-color: #5da423;
+  background-color: #7add6c;
   color: white;
 }
 /* line 82, ../../app/theme/sass/foundation/components/_labels.scss */
@@ -6004,7 +6004,7 @@ kbd {
 }
 /* line 58, ../../app/theme/sass/foundation/components/_progress-bars.scss */
 .progress.success .meter {
-  background: #5da423;
+  background: #7add6c;
   height: 100%;
   display: block;
 }
@@ -6229,8 +6229,8 @@ kbd {
     background: -moz-linear-gradient(top, white 0%, #f2f2f2 100%);
     background: -webkit-linear-gradient(top, white 0%, #f2f2f2 100%);
     background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
-    -webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px #e1f5d1, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke;
-    box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px #e1f5d1, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px whitesmoke;
+    -webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
+    box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
   }
   /* line 191, ../../app/theme/sass/foundation/components/_switch.scss */
   div.switch:hover > span, div.switch:focus > span {
@@ -6784,11 +6784,195 @@ select {
 Custom Styles
 *******************************************************************************/
 /* line 150, ../../app/theme/sass/app.scss */
+.myswitch {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  display: block;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 1.25em;
+  -webkit-animation: webkitSiblingBugfix infinite 1s;
+  height: 36px;
+  background: white;
+  border-color: #cccccc;
+  height: 36px;
+  background: white;
+  border-color: #cccccc;
+  -webkit-border-radius: TRUE;
+  border-radius: TRUE;
+}
+/* line 59, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch label {
+  position: relative;
+  left: 0;
+  z-index: 2;
+  float: left;
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  font-weight: bold;
+  text-align: left;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+/* line 76, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  -moz-appearance: none;
+}
+/* line 86, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:hover, .myswitch input:focus {
+  cursor: pointer;
+}
+/* line 92, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: 1;
+  display: block;
+  padding: 0;
+  border-width: 1px;
+  border-style: solid;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+/* line 107, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:not(:checked) + label {
+  opacity: 0;
+}
+/* line 110, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:checked {
+  display: none !important;
+}
+/* line 111, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input {
+  left: 0;
+  display: block !important;
+}
+/* line 115, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:first-of-type + label,
+.myswitch input:first-of-type + span + label {
+  left: -50%;
+}
+/* line 117, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:first-of-type:checked + label,
+.myswitch input:first-of-type:checked + span + label {
+  left: 0%;
+}
+/* line 121, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:last-of-type + label,
+.myswitch input:last-of-type + span + label {
+  right: -50%;
+  left: auto;
+  text-align: right;
+}
+/* line 123, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:last-of-type:checked + label,
+.myswitch input:last-of-type:checked + span + label {
+  right: 0%;
+  left: auto;
+}
+/* line 126, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch span.custom {
+  display: none !important;
+}
+/* line 139, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch label {
+  padding: 0 0.375em;
+  line-height: 2.3em;
+  font-size: 0.875em;
+}
+/* line 147, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:first-of-type:checked ~ span {
+  left: 100%;
+  margin-left: -2.1875em;
+}
+/* line 153, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  width: 2.25em;
+  height: 2.25em;
+}
+/* line 167, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  border-color: #b3b3b3;
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #f2f2f2 100%);
+  background: -webkit-linear-gradient(top, white 0%, #f2f2f2 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+  -webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
+  box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
+}
+/* line 191, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch:hover > span, .myswitch:focus > span {
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #e6e6e6 100%);
+  background: -webkit-linear-gradient(top, white 0%, #e6e6e6 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+}
+/* line 201, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch:active {
+  background: transparent;
+}
+/* line 139, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch label {
+  padding: 0 0.375em;
+  line-height: 2.3em;
+  font-size: 0.875em;
+}
+/* line 147, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch input:first-of-type:checked ~ span {
+  left: 100%;
+  margin-left: -2.1875em;
+}
+/* line 153, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  width: 2.25em;
+  height: 2.25em;
+}
+/* line 167, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  border-color: #b3b3b3;
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #f2f2f2 100%);
+  background: -webkit-linear-gradient(top, white 0%, #f2f2f2 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #f2f2f2 100%);
+  -webkit-box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 1000px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
+  box-shadow: 2px 0 10px 0 rgba(0, 0, 0, 0.07), 1000px 0 0 980px #7add6c, -2px 0 10px 0 rgba(0, 0, 0, 0.07), -1000px 0 0 1000px #dc0000;
+}
+/* line 191, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch:hover > span, .myswitch:focus > span {
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #e6e6e6 100%);
+  background: -webkit-linear-gradient(top, white 0%, #e6e6e6 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #e6e6e6 100%);
+}
+/* line 201, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch:active {
+  background: transparent;
+}
+/* line 211, ../../app/theme/sass/foundation/components/_switch.scss */
+.myswitch > span {
+  -webkit-border-radius: TRUE-1px;
+  border-radius: TRUE-1px;
+}
+
+/* line 156, ../../app/theme/sass/app.scss */
 #header {
   min-height: 32px;
   margin: 10px 0;
 }
-/* line 155, ../../app/theme/sass/app.scss */
+/* line 161, ../../app/theme/sass/app.scss */
 #header a {
   text-indent: -99999px;
   border-bottom: 0;
@@ -6796,16 +6980,16 @@ Custom Styles
   height: 32px;
   width: 32px;
 }
-/* line 165, ../../app/theme/sass/app.scss */
+/* line 171, ../../app/theme/sass/app.scss */
 #header .settings {
   background-position: -60px -298px;
 }
-/* line 168, ../../app/theme/sass/app.scss */
+/* line 174, ../../app/theme/sass/app.scss */
 #header .logout {
   background-position: -60px -345px;
 }
 
-/* line 175, ../../app/theme/sass/app.scss */
+/* line 181, ../../app/theme/sass/app.scss */
 #messages .status {
   border-style: solid;
   border-width: 1px;
@@ -6819,7 +7003,7 @@ Custom Styles
   border-color: #55d343;
   color: white;
 }
-/* line 178, ../../app/theme/sass/app.scss */
+/* line 184, ../../app/theme/sass/app.scss */
 #messages .warning {
   border-style: solid;
   border-width: 1px;
@@ -6833,7 +7017,7 @@ Custom Styles
   border-color: #ffcf30;
   color: white;
 }
-/* line 181, ../../app/theme/sass/app.scss */
+/* line 187, ../../app/theme/sass/app.scss */
 #messages .error {
   border-style: solid;
   border-width: 1px;
@@ -6847,7 +7031,7 @@ Custom Styles
   border-color: #a90000;
   color: white;
 }
-/* line 184, ../../app/theme/sass/app.scss */
+/* line 190, ../../app/theme/sass/app.scss */
 #messages .help {
   border-style: solid;
   border-width: 1px;
@@ -6861,7 +7045,7 @@ Custom Styles
   border-color: #da7b00;
   color: white;
 }
-/* line 187, ../../app/theme/sass/app.scss */
+/* line 193, ../../app/theme/sass/app.scss */
 #messages .close {
   font-size: 1.375em;
   padding: 5px 4px 4px;
@@ -6880,23 +7064,16 @@ Custom Styles
 /*******************************************************************************
 PAGES
 *******************************************************************************/
-/* line 200, ../../app/theme/sass/app.scss */
+/* line 206, ../../app/theme/sass/app.scss */
 #login .header {
   margin-bottom: 0.625em;
 }
-/* line 203, ../../app/theme/sass/app.scss */
-#login .row {
-  width: 50%;
-  min-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-/* line 213, ../../app/theme/sass/app.scss */
+/* line 219, ../../app/theme/sass/app.scss */
 #dashboard #menu li {
   list-style: none;
 }
-/* line 216, ../../app/theme/sass/app.scss */
+/* line 222, ../../app/theme/sass/app.scss */
 #dashboard #menu li .container {
   background-repeat: no-repeat;
   -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -6917,11 +7094,11 @@ PAGES
   -o-transition: background-position 0.2s ease-in;
   transition: background-position 0.2s ease-in;
 }
-/* line 222, ../../app/theme/sass/app.scss */
+/* line 228, ../../app/theme/sass/app.scss */
 #dashboard #menu li .container:hover {
   background-position-y: 200px;
 }
-/* line 227, ../../app/theme/sass/app.scss */
+/* line 233, ../../app/theme/sass/app.scss */
 #dashboard #menu li a {
   background: url(../images/sprites.png) no-repeat;
   width: 184px;
@@ -6934,36 +7111,36 @@ PAGES
   text-align: center;
   text-transform: uppercase;
 }
-/* line 240, ../../app/theme/sass/app.scss */
+/* line 246, ../../app/theme/sass/app.scss */
 #dashboard #menu li.feedback a {
   background-position: -784px -325px;
 }
-/* line 242, ../../app/theme/sass/app.scss */
+/* line 248, ../../app/theme/sass/app.scss */
 #dashboard #menu li.feedback a:hover {
   background-position: -977px -325px;
 }
-/* line 246, ../../app/theme/sass/app.scss */
+/* line 252, ../../app/theme/sass/app.scss */
 #dashboard #menu li.roles a {
   background-position: -780px -508px;
 }
-/* line 248, ../../app/theme/sass/app.scss */
+/* line 254, ../../app/theme/sass/app.scss */
 #dashboard #menu li.roles a:hover {
   background-position: -973px -508px;
 }
-/* line 252, ../../app/theme/sass/app.scss */
+/* line 258, ../../app/theme/sass/app.scss */
 #dashboard #menu li.recruit a {
   background-position: -782px -149px;
 }
-/* line 254, ../../app/theme/sass/app.scss */
+/* line 260, ../../app/theme/sass/app.scss */
 #dashboard #menu li.recruit a:hover {
   background-position: -973px -149px;
 }
-/* line 258, ../../app/theme/sass/app.scss */
+/* line 264, ../../app/theme/sass/app.scss */
 #dashboard #menu li.admin a {
   background: url(../images/admin_grey.png) no-repeat center 5px;
   background-size: 135px;
 }
-/* line 261, ../../app/theme/sass/app.scss */
+/* line 267, ../../app/theme/sass/app.scss */
 #dashboard #menu li.admin a:hover {
   background-image: url(../images/admin_orange.png);
 }

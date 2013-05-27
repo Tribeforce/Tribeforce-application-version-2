@@ -11,7 +11,7 @@ return array(
   ),
   'Opauth' => array(
     'callback' => 'callback_transport wordt niet ondersteund.',
-    'error' => 'Authentificatie fout: Opauth geeft error auth response.',
+    'error' => ':provider heeft je geen toestemming gegeven om in te loggen.',
     'missing' => 'Ongeldig auth antwoord: Delen van key auth antwoord ontbreken.',
     'reason'  => 'Ongeldig auth antwoord: :reason',
     'not_found' => "Sorry, maar deze :provider account is niet gelinkt met ons",

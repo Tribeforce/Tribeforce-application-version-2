@@ -147,6 +147,12 @@ select {
 /*******************************************************************************
 Custom Styles
 *******************************************************************************/
+.myswitch {
+  @include switch;
+  @include switch-size;
+  @include switch-style($switch-paddle-bg, $green_light, $red_light, TRUE, TRUE);
+}
+
 #header {
   min-height: $icon_size;
   margin: $gutter 0;
@@ -201,10 +207,10 @@ PAGES
     margin-bottom: emCalc($gutter);
   }
   .row {
-    width: 50%;
-    min-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+//    width: 50%;
+//    min-width: 400px;
+//    margin-left: auto;
+//    margin-right: auto;
   }
 }
 

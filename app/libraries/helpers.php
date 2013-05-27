@@ -7,7 +7,7 @@
 function page_name() {
   // TODO: Needs to be made more perfect
   // Keep only alfanumeric characters
-  $string = preg_replace("/[^A-Za-z\/]+/", "", $_SERVER["REQUEST_URI"]);
+  $string = preg_replace("/[^A-Za-z\/]+/", "", Request::path());
 
   // Put the chunks in an array and remove the empty elements
   $chunks = explode('/', $string);

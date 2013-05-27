@@ -11,6 +11,8 @@ class User extends SentryUserModel {
    */
     public static function getValidator($input) {
       $rules = array(
+        'first_name'=> 'required|alpha_dash|max:255',
+        'last_name' => 'required|alpha_dash|max:255',
         'email'     => 'required|email|between:4,255',
         'password'  => 'required|min:4|confirmed',
         'password_confirmation'=> 'required|min:4',

@@ -13,8 +13,12 @@ class UsersController extends \BaseController {
    */
   public function index()
   {
-    $id = Sentry::getUser()->id;
-    return $this->show($id);
+    $users = Sentry::getUserProvider()->findAll();
+
+    return View::make("users.index")->with(array(
+      'd' => $users,
+      'title' => trans("ui.users.title_index"),
+    ));
   }
 
   /**
@@ -66,9 +70,38 @@ class UsersController extends \BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
-  {
-    //
+  public function update($id) {
+    $input = Input::except('groups', '_method','_token');
+
+    // Validate the input
+    $validator = User::getValidator($input);
+    if ($validator->fails()) {
+      // TODO: use route('users.update')
+      return Redirect::back()->withInput()->withErrors($validator);
+    }
+
+    $user = User::find($id);
+
+    // Set the normal fields
+    foreach($input as $name => $value) {
+      $user->$name = $value;
+    }
+
+    // Set the group fields
+    $input = Input::only('groups');
+    if(isset($input['groups'])) {
+      foreach($input['groups'] as $group_name => $checked) {
+        $group = Sentry::getGroupProvider()->findByName($group_name);
+        $checked ? $user->addGroup($group) : $user->removeGroup($group);
+      }
+    }
+
+    // Set the settings fields
+
+    // Finally save the user
+    $user->save();
+
+    return Redirect::back();
   }
 
   /**
