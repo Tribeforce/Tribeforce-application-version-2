@@ -1,18 +1,19 @@
-@extends('layouts.master')
+@extends('layouts.offcanvas')
 
-@section('nav')
-  @parent
-
+@section('sidebar')
   Navigation bar
 @endsection
 
-@section('content')
+@section('main')
 <div id="user-show">
+  <div class="full-name">
+    {{ $d->first_name . ' ' . $d->last_name }}
+  </div>
   <div class="email">
     {{ $d->email }}
   </div>
   <?php // TODO: use link_to_route.  Seems buggy at this moment ?>
-  {{ link_to(route('users.edit', array('users' => $d->id)), trans('forms.edit'), array('class' => 'button radius')) }}
+  {{ link_to(route('users.edit', array('users' => $d->id)), trans('forms.edit'), array('class' => 'button right')) }}
   </a>
 </div>
 @endsection

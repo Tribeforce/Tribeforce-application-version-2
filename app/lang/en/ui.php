@@ -14,6 +14,16 @@ return array(
     'recruit' => 'Recruit',
     'admin' => 'Administer',
   ),
-  'user_created' => "The user :user has been created.",
-  'login_succes' => 'You have been logged in successfully.',
+  'user_created'      => "The user :user has been created. As soon as we have processed your request, we will send you an E-mail.",
+  'login_succes'      => 'You have been logged in successfully.',
+  'logged_in'         => 'You are logged in yet.',
+  'connection_succes' => 'This account is connected now with :provider.',
+  'fb_forget'         => 'This account has been disconnected from Facebook.',
+  'users' => array(
+    'title_index' => 'Users',
+    'title_show' => 'User :name',
+    'title_edit' => 'Edit :name',
+  ),
+  '403' => 'Sorry, but this page is not accessible for you.',
+  '404' => 'Sorry, but we have not been able to find this page.',
 );

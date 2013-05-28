@@ -13,24 +13,30 @@ class Messages {
 
   /**
    * This function adds a message to the session using Session::flash()
-   * @param string $message The message to be shown
-   * @param string $type2 The message type (has to be one of $types)
+   * @param string $key  The key of the message to be found in the translations
+   * @param string $type The message type (has to be one of $types)
+   * @param array  $params If the translation has parameters, we pass them here
+   * @param string $raw  If set, the value given in $key will be set,
+   *                     bypassing any translation
    */
-  public static function push($message, $type) {
-    if(!empty($message) && in_array($type , self::$types)) {
+  public static function push($type, $key, $params = array(), $raw = false) {
+    if(!empty($key) && in_array($type , self::$types)) {
       $messages = Session::get('messages');
-      $messages[$type][] = $message;
+      if($raw) {
+        $messages[$type][] = $key;
+      }
+      else {
+        $messages[$type][$key] = trans($key, $params);
+      }
       Session::put('messages', $messages);
     } else {
       throw new \InvalidArgumentException('The second argument is invalid.');
     }
-
   }
 
   /**
-   * This function adds a message to the session using Session::flash()
-   * @param string $message The message to be shown
-   * @param string $type2 The message type (has to be one of $types)
+   * This function gets the messages to be shown
+   * @param string $type Only het messages of this type
    */
   public static function get($type = 'all') {
     $messages = Session::get('messages');
@@ -47,7 +53,11 @@ class Messages {
 
   public static function __callStatic($name, $arguments) {
     if(in_array($name , self::$types)) {
-      self::push($arguments[0], $name);
+      if(isset($arguments[1])) {
+        self::push($name, $arguments[0], $arguments[1]);
+      } else {
+        self::push($name, $arguments[0]);
+      }
     } else {
       throw new \BadMethodCallException("Method $name is invalid");
     }

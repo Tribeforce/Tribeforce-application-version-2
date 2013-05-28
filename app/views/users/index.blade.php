@@ -1,12 +1,10 @@
-@extends('layouts.master')
+@extends('layouts.offcanvas')
 
-@section('nav')
-  @parent
-
+@section('sidebar')
   Navigation bar
 @endsection
 
-@section('content')
+@section('main')
 <div id="user-index">
   <table>
     <thead>
@@ -16,6 +14,7 @@
       <th>{{trans('forms.last_name')}}</th>
       <th>{{trans('forms.email')}}</th>
       <th>{{trans('forms.activated')}}</th>
+      <th>{{trans('forms.last_login')}}</th>
     </thead>
     <tbody>
     @foreach($d as $user)
@@ -28,7 +27,8 @@
       <td class="first-name">{{$user->first_name}}</td>
       <td class="last-name">{{$user->last_name}}</td>
       <td class="email">{{$user->email}}</td>
-      <td class="activated">{{$user->activated ? trans('ui.activated_on') : trans('ui.activated_off')}}</td>
+      <td class="activated">{{$user->activated ? trans('forms.activated_on') : trans('forms.activated_off')}}</td>
+      <td class="last-login">{{$user->last_login}}</td>
     </div>
     @endforeach
     </tbody>

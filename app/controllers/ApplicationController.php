@@ -2,8 +2,8 @@
 
 class ApplicationController extends BaseController {
   public function __construct() {
-    $this->beforeFilter('auth', array('only' => 'getIndex'));
-    $this->beforeFilter('csrf', array('on' => 'post'));
+    $this->beforeFilter('auth', array('except' => array('getLogin', 'postLogin')));
+    $this->beforeFilter('csrf', array('on' => array('post', 'put')));
   }
 
 
@@ -16,7 +16,7 @@ class ApplicationController extends BaseController {
   // Handle the login
   public function getLogin() {
     if(Sentry::check()) {
-      Messages::error(trans('ui.logged_in'));
+      Messages::error('ui.logged_in');
       return Redirect::to('/');
     } else {
       return View::make('login')->with(array('title'=>trans('ui.title_login')));
@@ -26,40 +26,48 @@ class ApplicationController extends BaseController {
   // Handle the login form data
   public function postLogin() {
     // Validate the input
-    $validator = User::getValidator(Input::all());
+    $input = Input::all();
+    $validator = User::getValidator($input);
     if ($validator->fails()) {
-      return Redirect::to('login')->withInput()->withErrors($validator);
+      // Because we use the foundation switch, we need to make sure the remember
+      // value is not passed through as it will set the value to all input
+      // fields with name="remember".
+      // In the foundation switch 2 radio boxes have the same name: remember
+      // We solve this by putting the value to the session and when we retrieve
+      // the value (in the view), we forget the value
+      Session::put('remember', $input['remember']);
+      return Redirect::to('login')->withInput(Input::except('remember'))
+                                  ->withErrors($validator);
     }
 
     // Try to authenticate the user
     try {
       $credentials = array(
-        'email' => Input::get('email'),
-        'password' => Input::get('password'),
+        'email' => $input['email'],
+        'password' => $input['password'],
       );
 
-      // TODO:Set to true to remember
-      $user = Sentry::authenticate($credentials, false);
-
-      Sentry::login($user, false);
+      $user = Sentry::authenticate($credentials, $input['remember']);
+      Sentry::login($user, $input['remember']);
 
       return Redirect::intended('/');
 
     }
     catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-      Messages::error(trans('exceptions.Sentry.UserNotFoundException'));
+      Messages::error('exceptions.Sentry.UserNotFoundException');
     } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-      Messages::error(trans('exceptions.Sentry.WrongPasswordException'));
+      Messages::error('exceptions.Sentry.WrongPasswordException');
     } catch (Cartalyst\Sentry\Users\UserNotActivatedException $e) {
-      Messages::error(trans('exceptions.Sentry.UserNotActivatedException'));
+      Messages::error('exceptions.Sentry.UserNotActivatedException');
     } catch (Cartalyst\Sentry\Throttling\UserSuspendedException $e) {
-      Messages::error(trans('exceptions.Sentry.UserSuspendedException'));
+      Messages::error('exceptions.Sentry.UserSuspendedException');
     }catch (Cartalyst\Sentry\Throttling\UserBannedException $e) {
-      Messages::error(trans('exceptions.Sentry.UserBannedException'));
+      Messages::error('exceptions.Sentry.UserBannedException');
     }
 
     // If we didn't return in the try block, we need to go back
-    return Redirect::to('login')->withInput();
+    Session::put('remember', $input['remember']);
+    return Redirect::to('login')->withInput(Input::except('remember'));
   }
 
 
@@ -76,7 +84,8 @@ class ApplicationController extends BaseController {
 
   // Show the settings page of the user
   public function getSettings() {
-    return Redirect::to('/');
+    $user = Sentry::getUser();
+    return Redirect::route('users.show', $user->id);
   }
 
 
@@ -104,12 +113,12 @@ class ApplicationController extends BaseController {
         'password' => Input::get('password'),
       ));
 
-      Messages::status(trans('ui.user_created', array('user' => $user->email)));
+      Messages::status('ui.user_created', array('user' => $user->email));
 
     } catch (Cartalyst\Sentry\Users\UserExistsException $e) {
-      Messages::error(trans('exceptions.Sentry.UserExistsException'));
+      Messages::error('exceptions.Sentry.UserExistsException');
     } catch (Cartalyst\Sentry\Groups\GroupNotFoundException $e) {
-      Messages::error(trans('exceptions.Sentry.GroupNotFoundException'));
+      Messages::error('exceptions.Sentry.GroupNotFoundException');
     }
 
     return Redirect::to('/');
@@ -128,7 +137,7 @@ class ApplicationController extends BaseController {
     $user = Sentry::getUser();
     $user->facebook_id = null;
     $user->save();
-    Messages::status(trans('ui.fb_forget'), array('provider' => "Facebook"));
+    Messages::status('ui.fb_forget', array('provider' => "Facebook"));
     return Redirect::back();
   }
 
@@ -167,7 +176,7 @@ class ApplicationController extends BaseController {
         $response = unserialize(base64_decode( $_GET['opauth'] ));
         break;
       default:
-        Messages::error(trans('exceptions.Opauth.callback'));
+        Messages::error('exceptions.Opauth.callback');
         break;
     }
 
@@ -176,8 +185,7 @@ class ApplicationController extends BaseController {
      * Check if it's an error callback
      */
     if (array_key_exists('error', $response)) {
-      Messages::error(trans('exceptions.Opauth.error',
-                                              array('provider' => 'Facebook')));
+      Messages::error('exceptions.Opauth.error', array('provider'=>'Facebook'));
     }
 
     /**
@@ -190,11 +198,10 @@ class ApplicationController extends BaseController {
       if (empty($response['auth']) || empty($response['timestamp'])
       || empty($response['signature']) || empty($response['auth']['provider'])
       || empty($response['auth']['uid'])) {
-        Messages::error(trans('exceptions.Opauth.missing'));
+        Messages::error('exceptions.Opauth.missing');
       } elseif (!$Opauth->validate(sha1(print_r($response['auth'], true)),
                      $response['timestamp'], $response['signature'], $reason)) {
-        Messages::error(trans('exceptions.Opauth.reason',
-                                                   array('reason' => $reason)));
+        Messages::error('exceptions.Opauth.reason', array('reason' => $reason));
       } else {
         // LOGGED IN
         $facebook_id = $response['auth']['uid'];
@@ -207,20 +214,17 @@ class ApplicationController extends BaseController {
           $user = Sentry::getUser();
           $user->facebook_id = $facebook_id;
           $user->save();
-          Messages::status(trans('ui.connection_succes',
-                                                array('provider' => $provider)));
+          Messages::status('ui.connection_succes',array('provider'=>$provider));
           return Redirect::back();
         } else { // Login request
           // If a user with the facebook_id exists, we log him in
           $user = User::where('facebook_id', '=', $facebook_id)->first();
           if(empty($user)) {
-            Messages::error(trans('exceptions.Opauth.not_found'),
+            Messages::error('exceptions.Opauth.not_found',
                                                 array('provider' => $provider));
             return Redirect::back();
-//            return View::make('login')
-//                         ->with(array('title' => trans('ui.title_login')));
-          } else {
-            Messages::status(trans('ui.login_succes'));
+         } else {
+            Messages::status('ui.login_succes');
             Sentry::login($user, false);
             return View::make('dashboard')
                          ->with(array('title' => trans('ui.title_dashboard')));

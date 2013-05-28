@@ -1,13 +1,13 @@
-@extends('layouts.master')
+@extends('layouts.offcanvas')
 
-@section('nav')
-  @parent
-
+@section('sidebar')
   Navigation bar
 @endsection
 
-@section('content')
+@section('main')
 <div id="dashboard">
-  @include('menu')
+  <ul class="small-block-grid-2 large-block-grid-3">
+    @include('menu', array('divider' => FALSE))
+  </ul>
 </div>
 @endsection

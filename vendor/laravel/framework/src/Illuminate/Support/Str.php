@@ -104,6 +104,17 @@ class Str {
 	}
 
 	/**
+	 * Return the length of the given string.
+	 *
+	 * @param  string  $value
+	 * @return int
+	 */
+	public static function length($value)
+	{
+		return mb_strlen($value);
+	}
+
+	/**
 	 * Limit the number of characters in a string.
 	 *
 	 * @param  string  $value

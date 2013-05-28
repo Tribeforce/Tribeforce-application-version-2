@@ -3,6 +3,12 @@
 class UsersController extends \BaseController {
   public function __construct() {
     $this->beforeFilter('auth');
+    $this->beforeFilter('admin', array('only' => array(
+      'index',
+      'create',
+      'store',
+      'destroy',
+    )));
   }
 
 
@@ -71,7 +77,7 @@ class UsersController extends \BaseController {
    * @return Response
    */
   public function update($id) {
-    $input = Input::except('groups', '_method','_token');
+    $input = Input::except('settings', 'groups', '_method','_token');
 
     // Validate the input
     $validator = User::getValidator($input);
@@ -97,11 +103,13 @@ class UsersController extends \BaseController {
     }
 
     // Set the settings fields
+    $input = Input::only('settings');
+    $user->setSettings($input['settings']);
 
     // Finally save the user
     $user->save();
 
-    return Redirect::back();
+    return Redirect::route('users.show', $id);
   }
 
   /**

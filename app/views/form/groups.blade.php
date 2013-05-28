@@ -2,6 +2,7 @@
 /*
 This template expects following variables:
 - Mandatory
+  $d : user object
 - Optional
 */
 
@@ -16,6 +17,6 @@ $groups = Sentry::getGroupProvider()->findAll();
 
   <?php // Field ?>
   @foreach($groups as $group)
-    @include('form.field', array('type' => 'switch', 'name' => 'groups['.$group->name.']', 'checked' => $d->inGroup($group)))
+    @include('form.field', array('type' => 'switch', 'name' => 'groups['.$group->name.']', 'default' => $d->inGroup($group)))
   @endforeach
 </div>

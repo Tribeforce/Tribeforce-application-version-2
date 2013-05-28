@@ -1,9 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="{{ Config::get('app.locale')}}">
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="{{ Config::get('app.locale')}}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ Config::get('app.locale')}}"> <!--<![endif]-->
   <head>
     <meta charset="UTF-8">
     <title>{{ $title }}</title>
     <script src="/js/vendor/custom.modernizr.js"></script>
+    <link rel="stylesheet" href="/css/foundation/icons/general_foundicons.css" />
+    <link rel="stylesheet" href="/css/foundation/icons/general_enclosed_foundicons.css" />
+    <link rel="stylesheet" href="/css/foundation/icons/social_foundicons.css" />
+    <link rel="stylesheet" href="/css/foundation/icons/accessibility_foundicons.css" />
     <link rel="stylesheet" href="/css/app.css" />
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,700' rel='stylesheet' type='text/css'>
   </head>

@@ -147,34 +147,78 @@ select {
 /*******************************************************************************
 Custom Styles
 *******************************************************************************/
-.myswitch {
-  @include switch;
-  @include switch-size;
-  @include switch-style($switch-paddle-bg, $green_light, $red_light, TRUE, TRUE);
-}
-
-#header {
-  min-height: $icon_size;
-  margin: $gutter 0;
-
-
-  a {
-    text-indent: -99999px;
-    border-bottom: 0;
-    background: $sprites;
-    height: $icon_size;
-    width: $icon_size;
+.top-bar {
+  .name {
+    margin: 0 100px;
+    img {
+      display: block;
+      position: absolute;
+      height: $topbar-height - 2*$gutter;
+      margin-top: $gutter;
+      margin-bottom: $gutter;
+    }
   }
+
   .greeting {
-//    max-width: 150px;
+     line-height: $topbar-height;
+    .logout,
+    .settings {
+      text-indent: -99999px;
+      border-bottom: 0;
+      background: $sprites;
+      height: $topbar-height - $gutter;
+      width: $topbar-height - $gutter;
+      margin: $gutter / 2;
+    }
+    .settings {
+      background-position: -60px -295px;
+    }
+    .logout {
+      background-position: -60px -342px;
+    }
   }
-  .settings {
-    background-position: -60px -298px;
-  }
-  .logout {
-    background-position: -60px -345px;
+
+}
+
+@media all and (min-width: 768px) {
+  .top-bar .name {
+    margin: 0 $gutter;
+    width: 100px;
   }
 }
+
+.toggle-sidebar.menu-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  margin-top: -16px;
+  a {
+    text-indent: 24px;
+    line-height: 33px;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8125em;
+    display: block;
+    height: 33px;
+  }
+  span {
+    display: block;
+    width: 16px;
+    height: 0;
+    @include box-shadow(0 10px 0 1px #FFF, 0 16px 0 1px #FFF, 0 22px 0 1px #FFF);
+  }
+}
+
+.top-bar-section ul.right {
+  background: inherit;
+}
+
+
+
+
+
+
 
 
 #messages {
@@ -193,7 +237,6 @@ Custom Styles
   .close {
     @include alert-close;
   }
-
 }
 
 
@@ -206,67 +249,57 @@ PAGES
   .header {
     margin-bottom: emCalc($gutter);
   }
-  .row {
-//    width: 50%;
-//    min-width: 400px;
-//    margin-left: auto;
-//    margin-right: auto;
-  }
 }
 
 #dashboard {
-  #menu {
-    li {
-      list-style: none;
+  li {
+    .container {
+      background-repeat: no-repeat;
+      @include shadow;
+      @include border-radius;
+      @include gradient($grey_light, $grey_medium);
+      @include transition(background-position 0.2s ease-in);
+      &:hover {
+        background-position-y: 200px;
+      }
+    }
 
-      .container {
-        background-repeat: no-repeat;
-        @include shadow;
-        @include border-radius;
-        @include gradient($grey_light, $grey_medium);
-        @include transition(background-position 0.2s ease-in);
-        &:hover {
-          background-position-y: 200px;
-        }
-      }
+    a {
+      background: $sprites;
+      width: 184px;
+      display: block;
+      margin: auto;
+      color: $orange_dark;
+      font-size: 1.5em;
+      padding: 140px 0 0 0;
+      height: 180px;
+      text-align: center;
+      text-transform: uppercase;
+    }
 
-      a {
-        background: $sprites;
-        width: 184px;
-        display: block;
-        margin: auto;
-        color: $orange_dark;
-        font-size: 1.5em;
-        padding: 140px 0 0 0;
-        height: 180px;
-        text-align: center;
-        text-transform: uppercase;
+    &.feedback a {
+      background-position: -784px -325px;
+      &:hover {
+        background-position: -977px -325px;
       }
-
-      &.feedback a {
-        background-position: -784px -325px;
-        &:hover {
-          background-position: -977px -325px;
-        }
+    }
+    &.roles a {
+      background-position: -780px -508px;
+      &:hover {
+        background-position: -973px -508px;
       }
-      &.roles a {
-        background-position: -780px -508px;
-        &:hover {
-          background-position: -973px -508px;
-        }
+    }
+    &.recruit a {
+      background-position: -782px -149px;
+      &:hover {
+        background-position: -973px -149px;
       }
-      &.recruit a {
-        background-position: -782px -149px;
-        &:hover {
-          background-position: -973px -149px;
-        }
-      }
-      &.admin a {
-        background: url(../images/admin_grey.png) no-repeat center 5px;
-        background-size: 135px;
-        &:hover {
-          background-image: url(../images/admin_orange.png);
-        }
+    }
+    &.admin a {
+      background: url(../images/admin_grey.png) no-repeat center 5px;
+      background-size: 135px;
+      &:hover {
+        background-image: url(../images/admin_orange.png);
       }
     }
   }

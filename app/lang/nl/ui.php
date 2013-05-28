@@ -19,10 +19,6 @@ return array(
   'logged_in' => 'Je bent reeds ingelogd.',
   'connection_succes' => 'Deze account is nu verbonden met :provider.',
   'fb_forget' => 'Deze account is nu losgekoppeld van Facebook',
-  'activated_on'  => 'Actief',
-  'activated_off' => 'Niet Actief',
-  'remember_on'  => 'Herinner me',
-  'remember_off' => 'Herinner me niet',
 
 
   'users' => array(
@@ -30,4 +26,6 @@ return array(
     'title_show' => 'Gebruiker :name',
     'title_edit' => 'Pas :name aan',
   ),
+  '403' => 'Sorry, maar deze pagina is niet toegankelijk voor je.',
+  '404' => 'Sorry, maar deze pagina hebben we niet kunnen vinden.',
 );

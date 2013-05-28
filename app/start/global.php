@@ -12,14 +12,12 @@
 */
 
 ClassLoader::addDirectories(array(
-
-	app_path().'/commands',
-	app_path().'/controllers',
-	app_path().'/models',
-	app_path().'/database/seeds',
-	app_path().'/libraries',
-	app_path().'/libraries/Messages',
-
+  app_path().'/commands',
+  app_path().'/controllers',
+  app_path().'/models',
+  app_path().'/database/seeds',
+  app_path().'/libraries',
+  app_path().'/libraries/Messages',
 ));
 
 /*
@@ -49,11 +47,20 @@ Log::useDailyFiles(storage_path().'/logs/'.$logFile);
 | shown, which includes a detailed stack trace during debug.
 |
 */
-
-App::error(function(Exception $exception, $code)
-{
-	Log::error($exception);
+App::error(function(Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException $e) {
+  return View::make("error")->with(array('title'=>'403', 'message'=>'ui.403'));
 });
+
+App::error(function(Symfony\Component\HttpKernel\Exception\NotFoundHttpException $e) {
+  return View::make("error")->with(array('title'=>'404', 'message'=>'ui.404'));
+});
+
+
+App::error(function(Exception $exception, $code) {
+  Log::error($exception);
+});
+
+
 
 /*
 |--------------------------------------------------------------------------

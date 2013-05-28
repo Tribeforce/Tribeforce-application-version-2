@@ -3,6 +3,38 @@
 use Cartalyst\Sentry\Users\Eloquent\User as SentryUserModel;
 
 class User extends SentryUserModel {
+    private static $allSettings = array(
+      'language' => array(
+        'type' => 'select',
+        'values' => array('en', 'nl'),
+      ),
+      'timezone' => array(
+        'type' => 'select',
+        'values' => array('zone1', 'zone2'),
+      ),
+      'locale'=> array(
+        'type' => 'select',
+        'values' => array('loc1', 'loc2'),
+      ),
+    );
+
+    public static function getAllSettings() {
+      return self::$allSettings;
+    }
+
+    public function hasGroup($group_name) {
+      $group = Sentry::getGroupProvider()->findByName($group_name);
+      return $this->inGroup($group);
+    }
+
+    public static function current() {
+      $user = Sentry::getUser();
+      return cast('User', $user);
+    }
+
+
+
+
   /**
    * Validates input against validation rueles.
    *
@@ -73,16 +105,11 @@ class User extends SentryUserModel {
    *
    * @param Array $key The name of the setting to get
    */
-    public function forgetSetting($key) {
+    public static function forgetSetting($key) {
       $settings = $this->getSettings($this->settings);
       array_forget($settings, $key);
       $this->setSettings($settings);
     }
-/*
-    public static function current() {
-      $user = Sentry::getUser();
-      $user = cast('User', $user);
-      return $user;
-    }
-*/
+
+
 }

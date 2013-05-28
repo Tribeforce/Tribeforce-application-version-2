@@ -193,10 +193,7 @@ class Opauth {
 	 * @return boolean true: valid; false: not valid.
 	 */
 	public function validate($input = null, $timestamp = null, $signature = null, &$reason = null) {
-		$functionCall = true;
 		if (!empty($_REQUEST['input']) && !empty($_REQUEST['timestamp']) && !empty($_REQUEST['signature'])) {
-			$functionCall = false;
-			$provider = $_REQUEST['input'];
 			$timestamp = $_REQUEST['timestamp'];
 			$signature = $_REQUEST['signature'];
 		}
@@ -291,20 +288,16 @@ class Opauth {
 				$strategy
 			);
 			
-			$found = false;
 			foreach ($directories as $dir) {
 				foreach ($classNames as $name) {
 					if (file_exists($dir.$name.'.php')) {
-						$found = true;
 						require $dir.$name.'.php';
 						return $name;
 					}
 				}
 			}
 			
-			if (!$found) {
-				trigger_error('Strategy class file ('.$this->env['strategy_dir'].$strategy.'/'.$strategy.'Strategy.php'.') is missing', E_USER_ERROR);
-			}
+			trigger_error('Strategy class file ('.$this->env['strategy_dir'].$strategy.'/'.$strategy.'Strategy.php'.') is missing', E_USER_ERROR);
 		}
 		return $strategy.'Strategy';
 	}

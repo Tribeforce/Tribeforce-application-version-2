@@ -69,9 +69,12 @@ function input_rules($input, $rules) {
 function dpm($var) {
   $pp = print_r($var, true);
 
-  Messages::status("<pre>$pp</pre>");
+  Messages::push('status', "<pre>$pp</pre>", null, true);
   Log::info($pp);
 }
+
+
+
 
 
 /**
@@ -81,11 +84,10 @@ function dpm($var) {
  * @param object $object
  * @return object
  */
-/*
 function cast($class, $object) {
   return unserialize(preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen($class) . ':"' . $class . '"', serialize($object)));
 }
-*/
+
 
 
 /******************

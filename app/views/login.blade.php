@@ -1,5 +1,17 @@
 @extends('layouts.basic')
 
+<?php
+$remember_options = array(
+  'type'    => 'switch',
+  'name'    => 'remember',
+  'sl'      => false,
+  'custom'  => true,
+  'default' => Session::get('remember'),
+);
+
+Session::forget('remember');
+?>
+
 @section('body')
 <div id="login">
   <div class="row header">
@@ -15,7 +27,7 @@
       {{ Form::open(array('url' => 'login')) }}
         @include('form.field', array('type' => 'text', 'name' => 'email'))
         @include('form.field', array('type' => 'password', 'name'=>'password'))
-        @include('form.field', array('type' => 'switch', 'name' => 'remember', 'sl' => false))
+        @include('form.field', $remember_options)
         {{ link_to_action('ApplicationController@getFacebook',
                      trans('forms.fb_login'), null, array('class' => 'left button secondary')) }}
         {{ link_to_action('ApplicationController@getRegister',

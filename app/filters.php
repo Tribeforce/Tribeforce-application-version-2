@@ -11,12 +11,13 @@
 |
 */
 
-App::before(function($request)
-{
-  App::setLocale('nl');
+App::before(function($request) {
+  $user = User::current();
+  $language = $user ? $user->getSetting('language') : 'en';
+  App::setLocale($language);
   Config::set('tf.version', '2.0');
   View::share('menu', Menu::get());
-  View::share('current_user', Sentry::getUser());
+  View::share('current_user', User::current());
 });
 
 
@@ -38,6 +39,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function() {
   if (!Sentry::check()) {
+    Messages::error('exceptions.not_logged_in');
     return Redirect::guest('login');
   }
 });
@@ -61,7 +63,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-  if (Auth::check()) return Redirect::to('/');
+//  if (Auth::check()) return Redirect::to('/');
 });
 
 /*
@@ -80,5 +82,16 @@ Route::filter('csrf', function()
   if (Session::token() != Input::get('_token'))
   {
     throw new Illuminate\Session\TokenMismatchException;
+  }
+});
+
+
+
+/*
+For pages that are only accessible for users in the 'admin' group
+*/
+Route::filter('admin', function() {
+  if( ! User::current()->hasGroup('admin')) {
+    throw new Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
   }
 });
