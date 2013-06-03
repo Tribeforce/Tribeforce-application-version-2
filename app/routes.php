@@ -12,5 +12,6 @@ use Illuminate\View\Environment;
 */
 
 Route::resource('users', 'UsersController');
+Route::resource('files', 'FilesController');
 
 Route::controller('/', 'ApplicationController');

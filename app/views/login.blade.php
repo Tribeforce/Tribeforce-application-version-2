@@ -32,7 +32,7 @@ Session::forget('remember');
                      trans('forms.fb_login'), null, array('class' => 'left button secondary')) }}
         {{ link_to_action('ApplicationController@getRegister',
                      trans('forms.register'), null, array('class' => 'left')) }}
-        @include('form.field', array('type' => 'submit', 'name' => trans('forms.login')))
+        @include('form.field', array('type' => 'submit', 'name' => 'login'))
       {{ Form::close() }}
     </div>
   </div>

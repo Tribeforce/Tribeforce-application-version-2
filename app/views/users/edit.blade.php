@@ -33,7 +33,7 @@
       @endif
     @endif
     {{ link_to('users/'.$d->id, trans('forms.cancel'), array('class' => 'left')) }}
-    @include('form.field', array('type' => 'submit', 'name' => trans('forms.save')))
+    @include('form.field', array('type' => 'submit', 'name' => 'save'))
   {{ Form::close() }}
 </div>
 @endsection

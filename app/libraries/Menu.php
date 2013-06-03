@@ -10,10 +10,10 @@ class Menu {
    * @type string $types holds the allowed types mor messages
    */
   private static $main = array(
-    'feedback',
-    'roles',
-    'recruit',
-    'admin',
+    'feedback' => 'feedback',
+    'roles'    => 'roles',
+    'recruit'  => 'recruit',
+    'admin'    => 'users',
   );
 
 

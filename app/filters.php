@@ -13,8 +13,10 @@
 
 App::before(function($request) {
   $user = User::current();
-  $language = $user ? $user->getSetting('language') : 'en';
-  App::setLocale($language);
+  $dflt_lang = 'en'; // Set the default language
+  $user_lang = is_object($user) ? $user->getSetting('language') : $dflt_lang;
+  $user_lang = empty($user_lang) ? $dflt_lang : $user_lang;
+  App::setLocale($user_lang);
   Config::set('tf.version', '2.0');
   View::share('menu', Menu::get());
   View::share('current_user', User::current());

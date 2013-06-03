@@ -24,6 +24,7 @@ if($type === 'submit') $show_label = false;
 if($type === 'switch') {
   $on  = isset($custom) && $custom ? trans("forms.$name"."_on") : trans('forms.on');
   $off = isset($custom) && $custom ? trans("forms.$name"."_off") : trans('forms.off');
+  $switch_class = isset($custom) && $custom ? ' custom' : '';
 } else {
   $old = Input::old($name);
   if(!empty($old)) {
@@ -48,7 +49,7 @@ if($type === 'switch') {
   @elseif($type === 'password')
     {{ Form::$type($name) }}
   @elseif($type === 'switch')
-    <div class="switch small">
+    <div class="switch small{{$switch_class}}">
     {{ Form::radio($name, '0', !$default, array('id' => $name)) }}
     {{ Form::label($name, $off) }}
     {{ Form::radio($name, '1', $default, array('id' => $name.'1')) }}
@@ -58,7 +59,7 @@ if($type === 'switch') {
   @elseif($type === 'select')
     {{ Form::select($name, $values, $default) }}
   @elseif($type === 'submit')
-    {{ Form::$type($name, array('class' => 'button right')) }}
+    {{ Form::$type(trans("forms.$name"), array('class' => 'button right')) }}
   @endif
 
   <?php // Error message ?>

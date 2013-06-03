@@ -7,7 +7,7 @@
 @section('main')
 <div id="dashboard">
   <ul class="small-block-grid-2 large-block-grid-3">
-    @include('menu', array('divider' => FALSE))
+    @include('menu', array('grid' => TRUE))
   </ul>
 </div>
 @endsection

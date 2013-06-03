@@ -15,7 +15,7 @@ return array(
   'on'                    => 'AAN',
   'off'                   => 'UIT',
   'activated_on'          => 'Actief',
-  'activated_off'         => 'Niet Actief',
+  'activated_off'         => 'Inactief',
   'remember_on'           => 'Herinner me',
   'remember_off'          => 'Herinner me niet',
   'login'                 => 'Inloggen',

@@ -147,6 +147,9 @@ select {
 /*******************************************************************************
 Custom Styles
 *******************************************************************************/
+
+/*** HEADER ***/
+
 .top-bar {
   .name {
     margin: 0 100px;
@@ -214,12 +217,25 @@ Custom Styles
   background: inherit;
 }
 
+section[role="main"] {
+  margin-top: 2*$gutter;
+}
+
+
+div.switch {
+  width: emCalc(100px);
+  label {
+    text-align: right;
+  }
+  input:last-of-type + label {
+    text-align: left;
+  }
+
+}
 
 
 
-
-
-
+/*** MESSAGES ***/
 
 #messages {
   .status {
@@ -238,6 +254,8 @@ Custom Styles
     @include alert-close;
   }
 }
+
+
 
 
 
@@ -269,7 +287,7 @@ PAGES
       width: 184px;
       display: block;
       margin: auto;
-      color: $orange_dark;
+      color: $orange_light;
       font-size: 1.5em;
       padding: 140px 0 0 0;
       height: 180px;

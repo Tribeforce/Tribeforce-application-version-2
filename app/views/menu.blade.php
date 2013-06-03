@@ -1,8 +1,18 @@
-@foreach($menu as $item)
+<?php
+$grid = isset($grid) && $grid;
+?>
+
+@foreach($menu as $item => $uri)
 <li class="{{ $item }}">
-  {{ HTML::link($item, trans("ui.menu.$item")) }}
+  @if($grid)
+  <div class="container">
+  @endif
+    {{ HTML::link($uri, trans("ui.menu.$item")) }}
+  @if($grid)
+  </div>
+  @endif
 </li>
-@if(!(isset($divider) && !$divider))
+@if(!$grid)
 <li class="divider"></li>
 @endif
 @endforeach

@@ -19,12 +19,13 @@ return array(
   'logged_in' => 'Je bent reeds ingelogd.',
   'connection_succes' => 'Deze account is nu verbonden met :provider.',
   'fb_forget' => 'Deze account is nu losgekoppeld van Facebook',
-
-
   'users' => array(
     'title_index' => 'Gebruikers',
     'title_show' => 'Gebruiker :name',
     'title_edit' => 'Pas :name aan',
+  ),
+  'files' => array(
+    'title_create' => 'Maak een bestand aan',
   ),
   '403' => 'Sorry, maar deze pagina is niet toegankelijk voor je.',
   '404' => 'Sorry, maar deze pagina hebben we niet kunnen vinden.',

@@ -148,7 +148,7 @@ PRIVATE
       $user = User::find($id);
       return View::make("users.$caller")->with(array(
         'd' => $user,
-        'title' => trans("ui.users.title_$caller", array('name' => $user->id)),
+        'title' => trans("ui.users.title_$caller", array('name' => $user->full_name())),
       ));
     } else {
       return View::make("users.$caller");
