@@ -275,7 +275,7 @@ class Builder {
 
 		$column = $this->model->getUpdatedAtColumn();
 
-		return array_add($values, $column, new DateTime);
+		return array_add($values, $column, $this->model->freshTimestamp());
 	}
 
 	/**
@@ -287,14 +287,24 @@ class Builder {
 	{
 		if ($this->model->isSoftDeleting())
 		{
-			$column = $this->model->getDeletedAtColumn();
-
-			return $this->query->update(array($column => new DateTime));
+			return $this->softDelete();
 		}
 		else
 		{
 			return $this->query->delete();
 		}
+	}
+
+	/**
+	 * Soft delete the record in the database.
+	 *
+	 * @return int
+	 */
+	protected function softDelete()
+	{
+		$column = $this->model->getDeletedAtColumn();
+
+		return $this->update(array($column => $this->model->freshTimestamp()));
 	}
 
 	/**
@@ -318,7 +328,7 @@ class Builder {
 		{
 			$column = $this->model->getDeletedAtColumn();
 
-			return $this->query->update(array($column => null));
+			return $this->update(array($column => null));
 		}
 	}
 
@@ -528,9 +538,10 @@ class Builder {
 	 * @param  string  $relation
 	 * @param  string  $operator
 	 * @param  int     $count
+	 * @param  string  $boolean
 	 * @return \Illuminate\Database\Eloquent\Builder
 	 */
-	public function has($relation, $operator = '>=', $count = 1)
+	public function has($relation, $operator = '>=', $count = 1, $boolean = 'and')
 	{
 		$instance = $this->model->$relation();
 
@@ -538,7 +549,20 @@ class Builder {
 
 		$this->query->mergeBindings($query->getQuery());
 
-		return $this->where(new Expression('('.$query->toSql().')'), $operator, $count);
+		return $this->where(new Expression('('.$query->toSql().')'), $operator, $count, $boolean);
+	}
+
+	/**
+	 * Add a relationship count condition to the query with an "or".
+	 *
+	 * @param  string  $relation
+	 * @param  string  $operator
+	 * @param  int     $count
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function orHas($relation, $operator = '>=', $count = 1)
+	{
+		return $this->has($relation, $operator, $count, 'or');
 	}
 
 	/**

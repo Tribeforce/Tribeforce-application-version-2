@@ -14,8 +14,8 @@ The label will be taken from the language file lang/<language>/forms.php
 */
 
 // Preppare variables
-$classes = isset($classes) ? $classes : '';
-$classes = "form-field type-$type name-$name $classes";
+$classes = isset($classes) ? " $classes" : '';
+$classes = "form-field-$type name-$name".$classes;
 $classes = $errors->has($name) ? "$classes error" : $classes;
 $show_label = isset($sl) && !$sl ? false : true;
 if($type === 'submit') $show_label = false;
@@ -26,7 +26,9 @@ if($type === 'switch') {
   $off = isset($custom) && $custom ? trans("forms.$name"."_off") : trans('forms.off');
   $switch_class = isset($custom) && $custom ? ' custom' : '';
 } else {
-  $old = Input::old($name);
+  // For dates, the old value must be the machine readible name.
+  // The name is suffixed with "_submit"
+  $old = $type === 'date' ? Input::old($name.'_submit') : Input::old($name);
   if(!empty($old)) {
     $def = $old;
   } elseif(isset($d->$name)) {
@@ -45,7 +47,12 @@ if($type === 'switch') {
 
   <?php // Field ?>
   @if($type === 'text')
-    {{ Form::$type($name, $def, array('placeholder'=>trans("forms.$name"))) }}
+    {{ Form::text($name, $def, array('placeholder'=>trans("forms.$name"))) }}
+  @elseif($type === 'date')
+    {{ Form::text($name, "", array(
+      'placeholder'=>trans("forms.$name"),
+      'data-value'=> str_replace('-', '/', $def),
+    )) }}
   @elseif($type === 'password')
     {{ Form::$type($name) }}
   @elseif($type === 'switch')
@@ -60,7 +67,17 @@ if($type === 'switch') {
     {{ Form::select($name, $values, $default) }}
   @elseif($type === 'submit')
     {{ Form::$type(trans("forms.$name"), array('class' => 'button right')) }}
+  @elseif($type === 'image')
+    @if(empty($def))
+    <image src="/images/avatar.png">
+    @else
+    <image src="/files/{{$def}}.small">
+    @endif
+    {{ Form::file($name) }}
   @endif
+
+
+
 
   <?php // Error message ?>
   @if($errors->has($name))

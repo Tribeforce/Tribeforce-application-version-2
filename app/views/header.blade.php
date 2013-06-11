@@ -6,7 +6,7 @@
       </a>
     </li>
     <li class="name greeting">
-      <a href="/" class="left">
+      <a href="/" class="left hide-for-small">
         {{ HTML::image('/images/logo.png', 'Tribeforce logo') }}
       </a>
       {{ HTML::linkAction('ApplicationController@getLogout', trans('ui.logout'),

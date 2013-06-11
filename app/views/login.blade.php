@@ -17,13 +17,9 @@ Session::forget('remember');
   <div class="row header">
     <div class="columns small-10 small-centered large-6 large-centered">
       {{ HTML::image('images/logo.png', 'Tribeforce logo') }}
-    </div>
-  </div>
 
-  @include('messages')
+      @include('messages')
 
-  <div class="row">
-    <div class="columns small-10 small-centered large-6 large-centered">
       {{ Form::open(array('url' => 'login')) }}
         @include('form.field', array('type' => 'text', 'name' => 'email'))
         @include('form.field', array('type' => 'password', 'name'=>'password'))

@@ -2,8 +2,8 @@
 /*
 This template expects following variables:
 - Mandatory
-  $d : user object
 - Optional
+  $d : user object
 */
 
 // Prepare variables
@@ -11,24 +11,17 @@ $settings = User::getAllSettings();
 
 ?>
 
-<div>
-  <?php // Label ?>
-  {{ Form::label('groups', trans("forms.settings_name")) }}
-
-  <?php // Field
+<fieldset class="collapsed">
+  <legend>@lang("forms.settings_name")</legend>
+  <?php
   foreach($settings as $setting_name => $setting) {
-    $key_val = array_fill_keys($setting['values'], '');
-    array_walk($key_val, function(&$value, $key, $setting_name) {
-      $value = trans("forms.settings.$setting_name.$key");
-    }, $setting_name);
-
     $params = array(
       'type'    => $setting['type'],
       'name'    => 'settings['.$setting_name.']',
-      'values'  => $key_val,
-      'default' => $d->getSetting($setting_name),
+      'values'  => key_val("forms.settings.$setting_name", $setting['values']),
+      'default' => isset($d) && $d->getSetting($setting_name) ? $d->getSetting($setting_name) : false,
     );
   ?>
     @include('form.field', $params)
   <?php } ?>
-</div>
+</fieldset>

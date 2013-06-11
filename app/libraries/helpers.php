@@ -73,7 +73,14 @@ function dpm($var) {
   Log::info($pp);
 }
 
-
+function randomString() {
+  $chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  $randstring = '';
+  for ($i = 0; $i < 8; $i++) {
+    $randstring = $chars[rand(0, strlen($chars)-1)];
+  }
+  return $randstring;
+}
 
 
 
@@ -86,6 +93,28 @@ function dpm($var) {
  */
 function cast($class, $object) {
   return unserialize(preg_replace('/^O:\d+:"[^"]++"/', 'O:' . strlen($class) . ':"' . $class . '"', serialize($object)));
+}
+
+
+/**
+ * Prepare the array of key values to be used in a select form element
+ *
+ * @param string $prefix The prefix to do the translation
+ *                       (example: forms.settings.language)
+ * @param array  $keys   An array holding the keys of the select. Those keys
+ *                       with the $prefix will then be used for the translation.
+ * @return array key values to be used in a select form element
+ */
+function key_val($prefix, $keys) {
+  // Fill the array with keys with no value
+  $key_val = array_fill_keys($keys, '');
+
+  // Fill the empty values with the translation
+  array_walk($key_val, function(&$value, $key, $prefix) {
+    $value = trans("$prefix.$key");
+  }, $prefix);
+
+  return $key_val;
 }
 
 

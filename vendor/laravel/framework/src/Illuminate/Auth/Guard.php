@@ -302,7 +302,7 @@ class Guard {
 	{
 		if ($this->events)
 		{
-			$payload = array_values(compact('credentials', 'remember', 'login'));
+			$payload = array($credentials, $remember, $login);
 
 			$this->events->fire('auth.attempt', $payload);
 		}
@@ -486,6 +486,17 @@ class Guard {
 	public function getProvider()
 	{
 		return $this->provider;
+	}
+
+	/**
+	 * Set the user provider used by the guard.
+	 *
+	 * @param  \Illuminate\Auth\UserProviderInterface  $provider
+	 * @return void
+	 */
+	public function setProvider(UserProviderInterface $provider)
+	{
+		$this->provider = $provider;
 	}
 
 	/**

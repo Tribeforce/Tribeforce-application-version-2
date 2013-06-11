@@ -183,7 +183,7 @@ Custom Styles
 
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: $small-screen) {
   .top-bar .name {
     margin: 0 $gutter;
     width: 100px;
@@ -257,6 +257,43 @@ div.switch {
 
 
 
+/*** FORM FIELDS ***/
+fieldset {
+  @include transition;
+
+  legend {
+    cursor: pointer;
+  }
+
+  &.collapsed {
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+[class*=form-field].mandatory {
+  label::after {
+    content: '*';
+  }
+}
+
+.form-field-image {
+  img {
+    float: right;
+    width: emCalc(100px);
+  }
+}
+
+.picker {
+  div,
+  select {
+    box-sizing: content-box;
+  }
+}
+
 
 
 /*******************************************************************************
@@ -270,55 +307,63 @@ PAGES
 }
 
 #dashboard {
-  li {
-    .container {
-      background-repeat: no-repeat;
-      @include shadow;
-      @include border-radius;
-      @include gradient($grey_light, $grey_medium);
-      @include transition(background-position 0.2s ease-in);
-      &:hover {
-        background-position-y: 200px;
-      }
-    }
+  text-align: center;
+  text-transform: uppercase;
 
-    a {
-      background: $sprites;
-      width: 184px;
-      display: block;
-      margin: auto;
-      color: $orange_light;
-      font-size: 1.5em;
-      padding: 140px 0 0 0;
-      height: 180px;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    &.feedback a {
-      background-position: -784px -325px;
-      &:hover {
-        background-position: -977px -325px;
-      }
-    }
-    &.roles a {
-      background-position: -780px -508px;
-      &:hover {
-        background-position: -973px -508px;
-      }
-    }
-    &.recruit a {
-      background-position: -782px -149px;
-      &:hover {
-        background-position: -973px -149px;
-      }
-    }
-    &.admin a {
-      background: url(../images/admin_grey.png) no-repeat center 5px;
-      background-size: 135px;
-      &:hover {
-        background-image: url(../images/admin_orange.png);
-      }
+  a {
+    display: block;
+    background-repeat: no-repeat;
+    @include shadow;
+    @include border-radius;
+    @include gradient($grey_light, $grey_medium);
+    @include transition(background-position 0.2s ease-in);
+    &:hover {
+      background-position-y: 200px;
     }
   }
+
+  i {
+    display: block;
+    font-size: emCalc(54px);
+  }
 }
+
+
+#tribe-index {
+  $thumb_width: emCalc(100px);
+  li {
+    border-bottom: 1px solid $section-border-color;
+    padding: 0;
+  }
+
+  .avatar {
+    width: $thumb_width;
+    height: $thumb_width;
+    float: left;
+    margin-right: $gutter;
+  }
+
+  img {
+    height: 100%;
+    width: auto;
+    margin: auto;
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//

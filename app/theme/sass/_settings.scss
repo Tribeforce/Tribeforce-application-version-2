@@ -132,9 +132,9 @@ $global-radius: 4px;
 // $small-screen: emCalc(768px);
 // $medium-screen: emCalc(1280px);
 // $large-screen: emCalc(1440px);
-$small-screen: emCalc(480px);
-$medium-screen: emCalc(768px);
-$large-screen: emCalc(1024px);
+$small-screen: emCalc(520px);
+//$medium-screen: emCalc(768px);
+$large-screen: emCalc(768px);
 
 // $screen: "only screen";
 // $small: "only screen and (min-width: #{$small-screen})";
@@ -323,6 +323,7 @@ $header-font-color: $body-font-color;
 // Legends
 
 // $legend-bg: #fff;
+$legend-bg: transparent;
 // $legend-font-weight: bold;
 // $legend-padding: 0 emCalc(3px);
 
@@ -1256,5 +1257,5 @@ $switch-negative-color: $red_light;
 
 // $topbar-transition-speed: 300ms;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
-$topbar-breakpoint: emCalc(768px); // Change to 9999px for always mobile layout
-// $topbar-media-query: "only screen and (min-width: "#{$topbar-breakpoint}")";
+$topbar-breakpoint: $small-screen; // Change to 9999px for always mobile layout
+$topbar-media-query: "only screen and (min-width: "#{$topbar-breakpoint}")";

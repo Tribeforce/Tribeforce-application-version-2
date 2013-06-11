@@ -10,10 +10,22 @@ class Menu {
    * @type string $types holds the allowed types mor messages
    */
   private static $main = array(
-    'feedback' => 'feedback',
-    'roles'    => 'roles',
-    'recruit'  => 'recruit',
-    'admin'    => 'users',
+    'tribe' => array(
+      'uri' => 'tribe',
+      'icon' => 'gen foundicon-address-book',
+    ),
+    'roles'    => array(
+      'uri' => 'roles',
+      'icon' => 'gen foundicon-folder',
+    ),
+    'recruit'  => array(
+      'uri' => 'recruit',
+      'icon' => 'gen foundicon-flag',
+    ),
+    'admin'    => array(
+      'uri' => 'users',
+      'icon' => 'gen foundicon-settings',
+    ),
   );
 
 

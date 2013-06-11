@@ -9,7 +9,7 @@ return array(
   'logout' => 'Logout',
   'version' => 'Version',
   'menu' => array(
-    'feedback' => 'Feedback',
+    'tribe' => 'Tribe',
     'roles' => 'Roles',
     'recruit' => 'Recruit',
     'admin' => 'Administer',

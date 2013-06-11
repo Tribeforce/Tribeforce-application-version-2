@@ -779,7 +779,7 @@ select {
   }
 }
 /* Styles for screens that are atleast 768px; */
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 156, ../../app/theme/sass/foundation/components/_grid.scss */
   .large-1 {
     position: relative;
@@ -1169,7 +1169,7 @@ th.hide-for-xlarge {
 }
 
 /* Medium Displays: 768px - 1279px */
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 85, ../../app/theme/sass/foundation/components/_visibility.scss */
   .show-for-medium,
   .show-for-medium-up {
@@ -1222,7 +1222,7 @@ th.hide-for-xlarge {
   }
 }
 /* Large Displays: 1280px - 1440px */
-@media only screen and (min-width: 48em) {
+@media only screen and (min-width: 1280px) {
   /* line 126, ../../app/theme/sass/foundation/components/_visibility.scss */
   .show-for-large,
   .show-for-large-up {
@@ -1278,7 +1278,7 @@ th.hide-for-xlarge {
   }
 }
 /* X-Large Displays: 1400px and up */
-@media only screen and (min-width: 64em) {
+@media only screen and (min-width: 48em) {
   /* line 173, ../../app/theme/sass/foundation/components/_visibility.scss */
   .show-for-xlarge {
     display: inherit !important;
@@ -1730,7 +1730,7 @@ th.hide-for-touch {
   }
 }
 /* Foundation Block Grids for above small breakpoint */
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* Remove small grid clearing */
   /* line 60, ../../app/theme/sass/foundation/components/_block-grid.scss */
   .small-block-grid-1 > li:nth-of-type(1n+1) {
@@ -2259,7 +2259,7 @@ blockquote p {
   padding: 0 0.0625em;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 361, ../../app/theme/sass/foundation/components/_type.scss */
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.4;
@@ -2638,7 +2638,7 @@ button.large, .button.large {
     border-radius: 1000px;
   }
 }
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 222, ../../app/theme/sass/foundation/components/_buttons.scss */
   button, .button {
     display: inline-block;
@@ -2980,7 +2980,7 @@ fieldset {
 /* line 215, ../../app/theme/sass/foundation/components/_forms.scss */
 fieldset legend {
   font-weight: bold;
-  background: white;
+  background: transparent;
   padding: 0 0.1875em;
   margin: 0;
   margin-left: -0.1875em;
@@ -3822,7 +3822,7 @@ form.custom .custom.disabled {
   position: relative;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 289, ../../app/theme/sass/foundation/components/_section.scss */
   .section-container.auto {
     border: 0;
@@ -4582,7 +4582,7 @@ form.custom .custom.disabled {
 
 /* line 344, ../../app/theme/sass/foundation/components/_top-bar.scss */
 .top-bar-js-breakpoint {
-  width: 48em !important;
+  width: 32.5em !important;
   visibility: hidden;
 }
 
@@ -4591,7 +4591,7 @@ form.custom .custom.disabled {
   display: block;
 }
 
-@media only screen and (min-width: 48em) {
+@media only screen and (min-width: 32.5em) {
   /* line 353, ../../app/theme/sass/foundation/components/_top-bar.scss */
   .top-bar {
     background: #111111;
@@ -5054,7 +5054,7 @@ form.custom .custom.disabled {
   display: none;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 283, ../../app/theme/sass/foundation/components/_orbit.scss */
   .touch .orbit-container .orbit-prev,
   .touch .orbit-container .orbit-next {
@@ -5120,7 +5120,7 @@ form.custom .custom.disabled {
   cursor: pointer;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 122, ../../app/theme/sass/foundation/components/_reveal.scss */
   .reveal-modal {
     padding: 1.875em;
@@ -5324,7 +5324,7 @@ form.custom .custom.disabled {
 }
 
 /* Styles for screens that are atleast 768px; */
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 187, ../../app/theme/sass/foundation/components/_joyride.scss */
   .joyride-tip-guide {
     width: 300px;
@@ -5467,7 +5467,7 @@ form.custom .custom.disabled {
   display: block;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 122, ../../app/theme/sass/foundation/components/_clearing.scss */
   .clearing-main-prev,
   .clearing-main-next {
@@ -6488,7 +6488,7 @@ a.th {
   font-weight: normal;
 }
 
-@media only screen and (min-width: 30em) {
+@media only screen and (min-width: 32.5em) {
   /* line 86, ../../app/theme/sass/foundation/components/_tooltips.scss */
   .tooltip > .nub {
     border-color: transparent transparent black transparent;
@@ -6819,7 +6819,7 @@ Custom Styles
   background-position: -60px -342px;
 }
 
-@media all and (min-width: 768px) {
+@media all and (min-width: 32.5em) {
   /* line 187, ../../app/theme/sass/app.scss */
   .top-bar .name {
     margin: 0 10px;
@@ -6950,16 +6950,60 @@ div.switch input:last-of-type + label {
   opacity: 0.5;
 }
 
+/*** FORM FIELDS ***/
+/* line 261, ../../app/theme/sass/app.scss */
+fieldset {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+}
+/* line 264, ../../app/theme/sass/app.scss */
+fieldset legend {
+  cursor: pointer;
+}
+/* line 268, ../../app/theme/sass/app.scss */
+fieldset.collapsed {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* line 278, ../../app/theme/sass/app.scss */
+[class*=form-field].mandatory label::after {
+  content: '*';
+}
+
+/* line 284, ../../app/theme/sass/app.scss */
+.form-field-image img {
+  float: right;
+  width: 6.25em;
+}
+
+/* line 292, ../../app/theme/sass/app.scss */
+.picker div,
+.picker select {
+  box-sizing: content-box;
+}
+
 /*******************************************************************************
 PAGES
 *******************************************************************************/
-/* line 267, ../../app/theme/sass/app.scss */
+/* line 304, ../../app/theme/sass/app.scss */
 #login .header {
   margin-bottom: 0.625em;
 }
 
-/* line 274, ../../app/theme/sass/app.scss */
-#dashboard li .container {
+/* line 309, ../../app/theme/sass/app.scss */
+#dashboard {
+  text-align: center;
+  text-transform: uppercase;
+}
+/* line 313, ../../app/theme/sass/app.scss */
+#dashboard a {
+  display: block;
   background-repeat: no-repeat;
   -webkit-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.3);
@@ -6979,53 +7023,32 @@ PAGES
   -o-transition: background-position 0.2s ease-in;
   transition: background-position 0.2s ease-in;
 }
-/* line 280, ../../app/theme/sass/app.scss */
-#dashboard li .container:hover {
+/* line 320, ../../app/theme/sass/app.scss */
+#dashboard a:hover {
   background-position-y: 200px;
 }
-/* line 285, ../../app/theme/sass/app.scss */
-#dashboard li a {
-  background: url(../images/sprites.png) no-repeat;
-  width: 184px;
+/* line 325, ../../app/theme/sass/app.scss */
+#dashboard i {
   display: block;
+  font-size: 3.375em;
+}
+
+/* line 334, ../../app/theme/sass/app.scss */
+#tribe-index li {
+  border-bottom: 1px solid #cccccc;
+  padding: 0;
+}
+/* line 339, ../../app/theme/sass/app.scss */
+#tribe-index .avatar {
+  width: 6.25em;
+  height: 6.25em;
+  float: left;
+  margin-right: 10px;
+}
+/* line 346, ../../app/theme/sass/app.scss */
+#tribe-index img {
+  height: 100%;
+  width: auto;
   margin: auto;
-  color: #ff960e;
-  font-size: 1.5em;
-  padding: 140px 0 0 0;
-  height: 180px;
-  text-align: center;
-  text-transform: uppercase;
-}
-/* line 298, ../../app/theme/sass/app.scss */
-#dashboard li.feedback a {
-  background-position: -784px -325px;
-}
-/* line 300, ../../app/theme/sass/app.scss */
-#dashboard li.feedback a:hover {
-  background-position: -977px -325px;
-}
-/* line 304, ../../app/theme/sass/app.scss */
-#dashboard li.roles a {
-  background-position: -780px -508px;
-}
-/* line 306, ../../app/theme/sass/app.scss */
-#dashboard li.roles a:hover {
-  background-position: -973px -508px;
-}
-/* line 310, ../../app/theme/sass/app.scss */
-#dashboard li.recruit a {
-  background-position: -782px -149px;
-}
-/* line 312, ../../app/theme/sass/app.scss */
-#dashboard li.recruit a:hover {
-  background-position: -973px -149px;
-}
-/* line 316, ../../app/theme/sass/app.scss */
-#dashboard li.admin a {
-  background: url(../images/admin_grey.png) no-repeat center 5px;
-  background-size: 135px;
-}
-/* line 319, ../../app/theme/sass/app.scss */
-#dashboard li.admin a:hover {
-  background-image: url(../images/admin_orange.png);
+  display: block;
 }

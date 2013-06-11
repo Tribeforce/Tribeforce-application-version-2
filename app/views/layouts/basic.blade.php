@@ -5,6 +5,9 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="{{ Config::get('app.locale')}}"> <!--<![endif]-->
   <head>
     <meta charset="UTF-8">
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=0" />
+
     <title>{{ $title }}</title>
     <script src="/js/vendor/custom.modernizr.js"></script>
     <link rel="stylesheet" href="/css/foundation/icons/general_foundicons.css" />

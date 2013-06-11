@@ -32,9 +32,10 @@ class UsersController extends \BaseController {
    *
    * @return Response
    */
-  public function create()
-  {
-    //
+  public function create() {
+    return View::make("users.create")->with(array(
+      'title' => trans("ui.users.title_create"),
+    ));
   }
 
   /**
@@ -42,9 +43,10 @@ class UsersController extends \BaseController {
    *
    * @return Response
    */
-  public function store()
-  {
-    //
+  public function store() {
+    $user = $this->upsert();
+    Messages::status('ui.created', array('name' => $user->full_name()));
+    return Redirect::action('TribeController@getIndex');
   }
 
   /**
@@ -77,39 +79,9 @@ class UsersController extends \BaseController {
    * @return Response
    */
   public function update($id) {
-    $input = Input::except('settings', 'groups', '_method','_token');
-
-    // Validate the input
-    $validator = User::getValidator($input);
-    if ($validator->fails()) {
-      // TODO: use route('users.update')
-      return Redirect::back()->withInput()->withErrors($validator);
-    }
-
-    $user = User::find($id);
-
-    // Set the normal fields
-    foreach($input as $name => $value) {
-      $user->$name = $value;
-    }
-
-    // Set the group fields
-    $input = Input::only('groups');
-    if(isset($input['groups'])) {
-      foreach($input['groups'] as $group_name => $checked) {
-        $group = Sentry::getGroupProvider()->findByName($group_name);
-        $checked ? $user->addGroup($group) : $user->removeGroup($group);
-      }
-    }
-
-    // Set the settings fields
-    $input = Input::only('settings');
-    $user->setSettings($input['settings']);
-
-    // Finally save the user
-    $user->save();
-
-    return Redirect::route('users.show', $id);
+    $user = $this->upsert($id);
+    Messages::status('ui.updated', array('name' => $user->full_name()));
+    return Redirect::action('TribeController@getDetails', $id);
   }
 
   /**
@@ -153,6 +125,101 @@ PRIVATE
     } else {
       return View::make("users.$caller");
     }
+  }
+
+
+
+  /**
+   * When using the pickdate.js library, hidden fields will be added holding the
+   * machine readible balue of the date. Those fields have the name of the
+   * original feields, with the suffix: "_submit".
+   * This function intends to remove the useless original key values for date
+   * fields and replace the suffixed key values by the original key values
+   * (without suffix).
+   *
+   * Example:
+   *   'birth_date' => 'Today',
+   *   'birth_date_submit' => '2013/06/15',
+   * will be transformed to:
+   *   'birth_date' => '2013/06/15',
+   * @param  array  $input The input array: We assume the _submit versions are
+   *                       always after the original versions when looping over
+   *                       the array
+   * @return array The updated array
+   */
+  private function prepare_date_fields($input) {
+    $suffix = '_submit';
+    $ret = array();
+
+    foreach($input as $key => $value) {
+      if(strrpos($key, $suffix) === FALSE) { // Just copy over
+        $ret[$key] = $value;
+      } else { // replacement needs to happen
+        $new_key = substr($key, 0, strlen($key) - strlen($suffix));
+        $ret[$new_key] = $value;
+      }
+    }
+
+    return $ret;
+
+  }
+
+  /**
+   * Helper function to insert or update a user
+   * @param  integer  $id If it is a update, the ID is given here
+   * @return  User  The new or updated User
+   */
+  private function upsert($id = null) {
+    $new = isset($id) ? false : true;
+
+    $input = Input::except('settings', 'groups', '_method','_token');
+    $input = $this->prepare_date_fields($input);
+
+    // Validate the input
+    $validator = User::getValidator($input);
+    if ($validator->fails()) {
+      // TODO: use route('users.update')
+      return Redirect::back()->withInput()->withErrors($validator);
+    }
+
+    $user = $new ? new User : User::find($id);
+
+    // Set the normal fields
+    foreach($input as $name => $value) {
+      $user->$name = $value;
+    }
+
+    if($new) {
+      // Set a dummy password.
+      // TODO: Maybe something needs to be done with the password
+      $user->password = randomString();
+
+      // Set the company
+      $company = User::current()->company;
+      $user->company()->associate($company);
+    }
+
+    // Save the user
+    $user->save();
+
+    // Set the group fields
+    $input = Input::only('groups');
+    if(isset($input['groups'])) {
+      foreach($input['groups'] as $group_name => $checked) {
+        $group = Sentry::getGroupProvider()->findByName($group_name);
+        $checked ? $user->addGroup($group) : $user->removeGroup($group);
+      }
+    }
+
+    // Set the settings fields
+    $input = Input::only('settings');
+    $user->setSettings($input['settings']);
+
+    // Handle the upload
+    $user->handleUpload("avatar");
+
+    // Return the new or updated user
+    return $user;
   }
 
 }

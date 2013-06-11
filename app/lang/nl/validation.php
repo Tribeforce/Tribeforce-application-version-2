@@ -19,7 +19,7 @@ return array(
 	"alpha"            => "The :attribute may only contain letters.",
 	"alpha_dash"       => "The :attribute may only contain letters, numbers, and dashes.",
 	"alpha_num"        => "The :attribute may only contain letters and numbers.",
-	"before"           => "The :attribute must be a date before :date.",
+	"before"           => "De :attribute moet een datum zijn voor :date.",
 	"between"          => array(
 		"numeric" => "The :attribute must be between :min - :max.",
 		"file"    => "The :attribute must be between :min - :max kilobytes.",
@@ -92,6 +92,10 @@ return array(
     'email' => 'E-mail',
     'password' => 'Wachtwoord',
     'password_confirmation' => 'Herhaal wachtwoord',
+    'first_name' => 'Voornaam',
+    'last_name' => 'Familienaam',
+    'birth_date' => 'Geboortedatum',
+    'hire_date' => 'Aanwervingsdatum',
   ),
 
   // CUSTOM

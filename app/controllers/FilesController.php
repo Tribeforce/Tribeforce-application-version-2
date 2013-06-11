@@ -6,7 +6,14 @@ class FilesController extends \BaseController {
 
   public function __construct() {
     $this->beforeFilter('auth');
-    self::$dir = app_path() . '/storage/files';
+    $this->beforeFilter('own:files', array(
+      'only' => array(
+        'show',
+        'edit',
+        'update',
+        'destroy'
+      )));
+    self::$dir = storage_path() . '/files';
   }
 
   /**
@@ -25,8 +32,8 @@ class FilesController extends \BaseController {
    * @return Response
    */
   public function create() {
-    return View::make("files.create")
-                 ->with('title', trans('ui.files.title_create'));
+//    return View::make("files.create")
+//                 ->with('title', trans('ui.files.title_create'));
   }
 
   /**
@@ -35,6 +42,8 @@ class FilesController extends \BaseController {
    * @return Response
    */
   public function store() {
+    dpm(Input::all());
+ /*
     $input = Input::all();
     if(Input::hasFile('image')) {
       $file = Input::file('image');
@@ -46,16 +55,22 @@ class FilesController extends \BaseController {
         Messages::status('ui.upload_succes');
       }
     }
+*/
   }
 
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
+   * @param  string  $filename The format is: style.type.id.extension
    * @return Response
    */
   public function show($id) {
-    $file_path = self::$dir .'/'. User::current()->id . '/' .$id;
+    list($type, $id, $ext, $style) = explode('.', $id);
+    $file_path = storage_path() . '/files/'. $type . "/$type.$id.$ext";
+    if( ! file_exists($file_path)) {
+      $file_path = storage_path() . "/files/$type.png";
+    }
+
     if(file_exists($file_path)) {
       $file = new Symfony\Component\HttpFoundation\File\File($file_path);
       $content_type = $file->getMimeType();
@@ -67,6 +82,9 @@ class FilesController extends \BaseController {
 
     App::abort(404, 'Resource not found');
   }
+
+
+
 
   /**
    * Show the form for editing the specified resource.

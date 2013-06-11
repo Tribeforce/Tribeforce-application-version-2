@@ -20,6 +20,7 @@ App::before(function($request) {
   Config::set('tf.version', '2.0');
   View::share('menu', Menu::get());
   View::share('current_user', User::current());
+  View::share('is_admin', User::current()->hasGroup('admin'));
 });
 
 
@@ -96,4 +97,23 @@ Route::filter('admin', function() {
   if( ! User::current()->hasGroup('admin')) {
     throw new Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
   }
+});
+
+
+/*
+Make sure we only access what is from our company
+*/
+Route::filter('own', function($route, $request, $value) {
+  if($value === 'files') {
+    $filename = Route::getCurrentRoute()->getParameter('files');
+
+    $user_id = explode('.', $filename)[1];
+    $user = User::find($user_id);
+
+    if(User::current()->company != $user->company) {
+      throw new Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+    }
+
+  }
+
 });

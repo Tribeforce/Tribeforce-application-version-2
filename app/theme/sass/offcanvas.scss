@@ -1,6 +1,7 @@
 /* Off canvas layout CSS/JS provided by or adapted from work by Jason Weaver and Luke Wroblewski Requires globals.css grid.css */
 
 @import "compass/css3";     // Use one CSS3 mixin instead of multiple vendor prefixes.
+@import "settings";
 
 body.off-canvas {
   padding: 0;
@@ -104,7 +105,8 @@ body.off-canvas {
 
 
 
-@media all and (min-width: 768px) {
+//@media all and (min-width: 768px) {
+@media only screen and (min-width: 520px) {
   menu-button,
   [role="complementary"] {
     width: 20%;

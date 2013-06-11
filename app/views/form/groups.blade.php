@@ -2,21 +2,20 @@
 /*
 This template expects following variables:
 - Mandatory
-  $d : user object
 - Optional
+  $d : user object
 */
 
-// Prepare variables
-$groups = Sentry::getGroupProvider()->findAll();
-
+if($is_admin) {
+  // Prepare variables
+  $groups = Sentry::getGroupProvider()->findAll();
 ?>
-
-<div>
-  <?php // Label ?>
-  {{ Form::label('groups', trans("forms.groups")) }}
-
-  <?php // Field ?>
-  @foreach($groups as $group)
-    @include('form.field', array('type' => 'switch', 'name' => 'groups['.$group->name.']', 'default' => $d->inGroup($group)))
-  @endforeach
-</div>
+  <fieldset class="collapsed">
+    <legend>@lang("forms.groups")</legend>
+    <?php
+    foreach($groups as $group) {
+      $default = isset($d) && $d->inGroup($group) ? true : false; ?>
+      @include('form.field', array('type' => 'switch', 'name' => 'groups['.$group->name.']', 'default' => $default))
+    <?php } ?>
+  </fieldset>
+<?php } ?>
