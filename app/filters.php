@@ -12,6 +12,7 @@
 */
 
 App::before(function($request) {
+  // TODO: Simplify this between the case for logged in and non logged in
   $user = User::current();
   $dflt_lang = 'en'; // Set the default language
   $user_lang = is_object($user) ? $user->getSetting('language') : $dflt_lang;
@@ -19,8 +20,12 @@ App::before(function($request) {
   App::setLocale($user_lang);
   Config::set('tf.version', '2.0');
   View::share('menu', Menu::get());
-  View::share('current_user', User::current());
-  View::share('is_admin', User::current()->hasGroup('admin'));
+  View::share('current_user', $user);
+  if(is_object($user)) {
+    View::share('is_admin', User::current()->hasGroup('admin'));
+  } else {
+    View::share('is_admin', false);
+  }
 });
 
 
