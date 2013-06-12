@@ -104,9 +104,12 @@ body.off-canvas {
 }
 
 
-
 //@media all and (min-width: 768px) {
-@media only screen and (min-width: 520px) {
+@media all and (min-width: $small-screen) and (orientation: landscape) {
+  li.toggle-sidebar {
+    display: none;
+  }
+
   menu-button,
   [role="complementary"] {
     width: 20%;
@@ -117,20 +120,6 @@ body.off-canvas {
   [role="main"] {
     width: 80%;
     padding: 0 15px;
-  }
-  .paneled [role="main"] {
-    width: 100%;
-    padding: 0;
-    background: #f4f4f4;
-    left: 0 !important;
-  }
-  .page-panel {
-    display: block;
-    min-height: 800px;
-    float: none;
-    margin: 0;
-    width: 100%;
-    background: #f4f4f4;
   }
   .hide-extras {
     [role="main"] {

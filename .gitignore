@@ -1,6 +1,6 @@
 /bootstrap/compiled.php
 composer.lock
 .DS_Store
-*/.sass-cache/*
+/app/theme/.sass-cache/*
 /app/config/*
 /app/storage/files/

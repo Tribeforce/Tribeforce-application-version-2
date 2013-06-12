@@ -151,8 +151,12 @@ Custom Styles
 /*** HEADER ***/
 
 .top-bar {
+  height: auto;
+
   .name {
-    margin: 0 100px;
+    margin: 0;
+    margin-left: 100px;
+    width: 100px;
     img {
       display: block;
       position: absolute;
@@ -161,32 +165,17 @@ Custom Styles
       margin-bottom: $gutter;
     }
   }
-
-  .greeting {
-     line-height: $topbar-height;
-    .logout,
-    .settings {
-      text-indent: -99999px;
-      border-bottom: 0;
-      background: $sprites;
-      height: $topbar-height - $gutter;
-      width: $topbar-height - $gutter;
-      margin: $gutter / 2;
-    }
-    .settings {
-      background-position: -60px -295px;
-    }
-    .logout {
-      background-position: -60px -342px;
-    }
-  }
-
 }
 
 @media all and (min-width: $small-screen) {
   .top-bar .name {
-    margin: 0 $gutter;
-    width: 100px;
+    margin-left: 100px;
+  }
+}
+
+@media all and (min-width: $large-screen) {
+  .top-bar .name {
+    margin-left: $gutter;
   }
 }
 

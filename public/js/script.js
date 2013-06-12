@@ -30,4 +30,36 @@ $(document).ready(function() {
     $(this).siblings().slideToggle();
   });
 
+  /**** TOPMENU ANIMATION ****/
+  // Attach click handler
+  $('nav.top-bar .toggle-topbar').click(function() {
+    $selector = $('nav.top-bar section.top-bar-section');
+    if($('nav.top-bar').hasClass('expanded')) {
+      if($(window).width() < 768) {
+        $selector.slideUp();
+      }
+    } else {
+      $selector.slideDown();
+    }
+  });
+
+  $(window).resize(function() {
+    $selector = $('nav.top-bar section.top-bar-section');
+    if($(window).width() > 520) {
+      $selector.slideDown();
+    } else {
+      $selector.slideUp();
+    }
+  });
+
+  // On load, we always slide up except if we are in wide screen
+  if($(window).width() <= 520) {
+    $('nav.top-bar section.top-bar-section').slideUp();
+  }
 });
+
+/**** GLOBAL FUNCTIONS ****/
+accordeonSlide = function(options) {
+//  $('.section-container .content').slideUp();
+  $('.section-container .active .content').css('display', 'none').slideDown();
+};

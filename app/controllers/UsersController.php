@@ -44,9 +44,7 @@ class UsersController extends \BaseController {
    * @return Response
    */
   public function store() {
-    $user = $this->upsert();
-    Messages::status('ui.created', array('name' => $user->full_name()));
-    return Redirect::action('TribeController@getIndex');
+    return $this->upsert();
   }
 
   /**
@@ -79,9 +77,7 @@ class UsersController extends \BaseController {
    * @return Response
    */
   public function update($id) {
-    $user = $this->upsert($id);
-    Messages::status('ui.updated', array('name' => $user->full_name()));
-    return Redirect::action('TribeController@getDetails', $id);
+    return $this->upsert($id);
   }
 
   /**
@@ -167,7 +163,7 @@ PRIVATE
   /**
    * Helper function to insert or update a user
    * @param  integer  $id If it is a update, the ID is given here
-   * @return  User  The new or updated User
+   * @return  RedirectResponse  The new or updated User
    */
   private function upsert($id = null) {
     $new = isset($id) ? false : true;
@@ -218,8 +214,16 @@ PRIVATE
     // Handle the upload
     $user->handleUpload("avatar");
 
-    // Return the new or updated user
-    return $user;
+    // Save the user again
+    $user->save();
+
+    if($new) {
+      Messages::status('ui.created', array('name' => $user->full_name()));
+      return Redirect::action('TribeController@getIndex');
+    } else {
+      Messages::status('ui.updated', array('name' => $user->full_name()));
+      return Redirect::action('TribeController@getDetails', $id);
+    }
   }
 
 }

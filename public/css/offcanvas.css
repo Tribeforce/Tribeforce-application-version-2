@@ -121,8 +121,13 @@ body.off-canvas {
   margin-right: -80%;
 }
 
-@media only screen and (min-width: 520px) {
-  /* line 111, ../../app/theme/sass/offcanvas.scss */
+@media all and (min-width: 32.5em) and (orientation: landscape) {
+  /* line 109, ../../app/theme/sass/offcanvas.scss */
+  li.toggle-sidebar {
+    display: none;
+  }
+
+  /* line 114, ../../app/theme/sass/offcanvas.scss */
   menu-button,
   [role="complementary"] {
     width: 20%;
@@ -131,35 +136,17 @@ body.off-canvas {
     padding: 0 15px;
   }
 
-  /* line 117, ../../app/theme/sass/offcanvas.scss */
+  /* line 120, ../../app/theme/sass/offcanvas.scss */
   [role="main"] {
     width: 80%;
     padding: 0 15px;
   }
 
-  /* line 121, ../../app/theme/sass/offcanvas.scss */
-  .paneled [role="main"] {
-    width: 100%;
-    padding: 0;
-    background: #f4f4f4;
-    left: 0 !important;
-  }
-
-  /* line 127, ../../app/theme/sass/offcanvas.scss */
-  .page-panel {
-    display: block;
-    min-height: 800px;
-    float: none;
-    margin: 0;
-    width: 100%;
-    background: #f4f4f4;
-  }
-
-  /* line 136, ../../app/theme/sass/offcanvas.scss */
+  /* line 125, ../../app/theme/sass/offcanvas.scss */
   .hide-extras [role="main"] {
     width: 100%;
   }
-  /* line 139, ../../app/theme/sass/offcanvas.scss */
+  /* line 128, ../../app/theme/sass/offcanvas.scss */
   .hide-extras [role="complementary"] {
     display: none;
   }

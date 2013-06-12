@@ -73,14 +73,16 @@
     {{HTML::script('/js/foundation/foundation.cookie.js')}}
     {{HTML::script('/js/foundation/foundation.offcanvas.js')}}
 
-    <script>
-      $(document).foundation();
-    </script>
     {{HTML::script('/js/pickdate/picker.js')}}
     {{HTML::script('/js/pickdate/picker.date.js')}}
     @if($lang === 'nl')
       {{HTML::script('/js/pickdate/translations/nl_NL.js')}}
     @endif
     {{HTML::script('/js/script.js')}}
+    <script>
+      $(document).foundation('topbar section', {callback: accordeonSlide}, function(response) {
+        console.log(response.errors);
+      });
+    </script>
   </body>
 </html>

@@ -6784,11 +6784,17 @@ select {
 Custom Styles
 *******************************************************************************/
 /*** HEADER ***/
-/* line 154, ../../app/theme/sass/app.scss */
-.top-bar .name {
-  margin: 0 100px;
+/* line 153, ../../app/theme/sass/app.scss */
+.top-bar {
+  height: auto;
 }
 /* line 156, ../../app/theme/sass/app.scss */
+.top-bar .name {
+  margin: 0;
+  margin-left: 100px;
+  width: 100px;
+}
+/* line 160, ../../app/theme/sass/app.scss */
 .top-bar .name img {
   display: block;
   position: absolute;
@@ -6796,44 +6802,27 @@ Custom Styles
   margin-top: 10px;
   margin-bottom: 10px;
 }
-/* line 165, ../../app/theme/sass/app.scss */
-.top-bar .greeting {
-  line-height: 45px;
-}
-/* line 168, ../../app/theme/sass/app.scss */
-.top-bar .greeting .logout,
-.top-bar .greeting .settings {
-  text-indent: -99999px;
-  border-bottom: 0;
-  background: url(../images/sprites.png) no-repeat;
-  height: 35px;
-  width: 35px;
-  margin: 5px;
-}
-/* line 176, ../../app/theme/sass/app.scss */
-.top-bar .greeting .settings {
-  background-position: -60px -295px;
-}
-/* line 179, ../../app/theme/sass/app.scss */
-.top-bar .greeting .logout {
-  background-position: -60px -342px;
-}
 
 @media all and (min-width: 32.5em) {
-  /* line 187, ../../app/theme/sass/app.scss */
+  /* line 171, ../../app/theme/sass/app.scss */
   .top-bar .name {
-    margin: 0 10px;
-    width: 100px;
+    margin-left: 100px;
   }
 }
-/* line 193, ../../app/theme/sass/app.scss */
+@media all and (min-width: 48em) {
+  /* line 177, ../../app/theme/sass/app.scss */
+  .top-bar .name {
+    margin-left: 10px;
+  }
+}
+/* line 182, ../../app/theme/sass/app.scss */
 .toggle-sidebar.menu-icon {
   position: absolute;
   left: 15px;
   top: 50%;
   margin-top: -16px;
 }
-/* line 198, ../../app/theme/sass/app.scss */
+/* line 187, ../../app/theme/sass/app.scss */
 .toggle-sidebar.menu-icon a {
   text-indent: 24px;
   line-height: 33px;
@@ -6844,7 +6833,7 @@ Custom Styles
   display: block;
   height: 33px;
 }
-/* line 208, ../../app/theme/sass/app.scss */
+/* line 197, ../../app/theme/sass/app.scss */
 .toggle-sidebar.menu-icon span {
   display: block;
   width: 16px;
@@ -6854,31 +6843,31 @@ Custom Styles
   box-shadow: 0 10px 0 1px white, 0 16px 0 1px white, 0 22px 0 1px white;
 }
 
-/* line 216, ../../app/theme/sass/app.scss */
+/* line 205, ../../app/theme/sass/app.scss */
 .top-bar-section ul.right {
   background: inherit;
 }
 
-/* line 220, ../../app/theme/sass/app.scss */
+/* line 209, ../../app/theme/sass/app.scss */
 section[role="main"] {
   margin-top: 20px;
 }
 
-/* line 225, ../../app/theme/sass/app.scss */
+/* line 214, ../../app/theme/sass/app.scss */
 div.switch {
   width: 6.25em;
 }
-/* line 227, ../../app/theme/sass/app.scss */
+/* line 216, ../../app/theme/sass/app.scss */
 div.switch label {
   text-align: right;
 }
-/* line 230, ../../app/theme/sass/app.scss */
+/* line 219, ../../app/theme/sass/app.scss */
 div.switch input:last-of-type + label {
   text-align: left;
 }
 
 /*** MESSAGES ***/
-/* line 241, ../../app/theme/sass/app.scss */
+/* line 230, ../../app/theme/sass/app.scss */
 #messages .status {
   border-style: solid;
   border-width: 1px;
@@ -6892,7 +6881,7 @@ div.switch input:last-of-type + label {
   border-color: #55d343;
   color: white;
 }
-/* line 244, ../../app/theme/sass/app.scss */
+/* line 233, ../../app/theme/sass/app.scss */
 #messages .warning {
   border-style: solid;
   border-width: 1px;
@@ -6906,7 +6895,7 @@ div.switch input:last-of-type + label {
   border-color: #ffcf30;
   color: white;
 }
-/* line 247, ../../app/theme/sass/app.scss */
+/* line 236, ../../app/theme/sass/app.scss */
 #messages .error {
   border-style: solid;
   border-width: 1px;
@@ -6920,7 +6909,7 @@ div.switch input:last-of-type + label {
   border-color: #a90000;
   color: white;
 }
-/* line 250, ../../app/theme/sass/app.scss */
+/* line 239, ../../app/theme/sass/app.scss */
 #messages .help {
   border-style: solid;
   border-width: 1px;
@@ -6934,7 +6923,7 @@ div.switch input:last-of-type + label {
   border-color: #da7b00;
   color: white;
 }
-/* line 253, ../../app/theme/sass/app.scss */
+/* line 242, ../../app/theme/sass/app.scss */
 #messages .close {
   font-size: 1.375em;
   padding: 5px 4px 4px;
@@ -6951,18 +6940,18 @@ div.switch input:last-of-type + label {
 }
 
 /*** FORM FIELDS ***/
-/* line 261, ../../app/theme/sass/app.scss */
+/* line 250, ../../app/theme/sass/app.scss */
 fieldset {
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s;
   transition: all 1s;
 }
-/* line 264, ../../app/theme/sass/app.scss */
+/* line 253, ../../app/theme/sass/app.scss */
 fieldset legend {
   cursor: pointer;
 }
-/* line 268, ../../app/theme/sass/app.scss */
+/* line 257, ../../app/theme/sass/app.scss */
 fieldset.collapsed {
   border-left: none;
   border-right: none;
@@ -6971,18 +6960,18 @@ fieldset.collapsed {
   padding-bottom: 0;
 }
 
-/* line 278, ../../app/theme/sass/app.scss */
+/* line 267, ../../app/theme/sass/app.scss */
 [class*=form-field].mandatory label::after {
   content: '*';
 }
 
-/* line 284, ../../app/theme/sass/app.scss */
+/* line 273, ../../app/theme/sass/app.scss */
 .form-field-image img {
   float: right;
   width: 6.25em;
 }
 
-/* line 292, ../../app/theme/sass/app.scss */
+/* line 281, ../../app/theme/sass/app.scss */
 .picker div,
 .picker select {
   box-sizing: content-box;
@@ -6991,17 +6980,17 @@ fieldset.collapsed {
 /*******************************************************************************
 PAGES
 *******************************************************************************/
-/* line 304, ../../app/theme/sass/app.scss */
+/* line 293, ../../app/theme/sass/app.scss */
 #login .header {
   margin-bottom: 0.625em;
 }
 
-/* line 309, ../../app/theme/sass/app.scss */
+/* line 298, ../../app/theme/sass/app.scss */
 #dashboard {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 313, ../../app/theme/sass/app.scss */
+/* line 302, ../../app/theme/sass/app.scss */
 #dashboard a {
   display: block;
   background-repeat: no-repeat;
@@ -7023,29 +7012,29 @@ PAGES
   -o-transition: background-position 0.2s ease-in;
   transition: background-position 0.2s ease-in;
 }
-/* line 320, ../../app/theme/sass/app.scss */
+/* line 309, ../../app/theme/sass/app.scss */
 #dashboard a:hover {
   background-position-y: 200px;
 }
-/* line 325, ../../app/theme/sass/app.scss */
+/* line 314, ../../app/theme/sass/app.scss */
 #dashboard i {
   display: block;
   font-size: 3.375em;
 }
 
-/* line 334, ../../app/theme/sass/app.scss */
+/* line 323, ../../app/theme/sass/app.scss */
 #tribe-index li {
   border-bottom: 1px solid #cccccc;
   padding: 0;
 }
-/* line 339, ../../app/theme/sass/app.scss */
+/* line 328, ../../app/theme/sass/app.scss */
 #tribe-index .avatar {
   width: 6.25em;
   height: 6.25em;
   float: left;
   margin-right: 10px;
 }
-/* line 346, ../../app/theme/sass/app.scss */
+/* line 335, ../../app/theme/sass/app.scss */
 #tribe-index img {
   height: 100%;
   width: auto;
