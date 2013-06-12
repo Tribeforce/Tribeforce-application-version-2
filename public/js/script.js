@@ -43,6 +43,7 @@ $(document).ready(function() {
     }
   });
 
+  // The resize actions
   $(window).resize(function() {
     $selector = $('nav.top-bar section.top-bar-section');
     if($(window).width() > 520) {
@@ -56,6 +57,7 @@ $(document).ready(function() {
   if($(window).width() <= 520) {
     $('nav.top-bar section.top-bar-section').slideUp();
   }
+
 });
 
 /**** GLOBAL FUNCTIONS ****/
