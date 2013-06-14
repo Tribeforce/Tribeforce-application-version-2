@@ -6,10 +6,11 @@
   Foundation.libs.section = {
     name: 'section',
 
-    version : '4.1.7',
+    version : '4.2.2',
 
     settings : {
       deep_linking: false,
+      small_breakpoint: 768,
       one_up: true,
       section_selector : '[data-section]',
       region_selector : 'section, .section, [data-section-region]',
@@ -28,7 +29,7 @@
         $.extend(true, self.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
         this.set_active_from_hash();
         this.events();
 
@@ -199,7 +200,7 @@
         self.position_titles($this);
 
         if ( (self.is_horizontal_nav($this) && !self.small($this))
-          || self.is_vertical_tabs($this)) {
+          || self.is_vertical_tabs($this) && !self.small($this)) {
           self.position_content($this);
         } else {
           self.position_content($this, false);
@@ -245,7 +246,7 @@
               var content = $(self.settings.content_selector, this),
                   content_slug = content.data('slug');
 
-              if (new RegExp(content_slug, 'i').test(hash)) 
+              if (new RegExp(content_slug, 'i').test(hash))
                 return content;
             });
 
@@ -320,6 +321,7 @@
 
             title_width = self.outerWidth(title);
             content_width = self.outerWidth(section) - title_width;
+
             if (content_width < content_min_width) {
               content_min_width = content_width;
             }
@@ -345,9 +347,6 @@
             content.css('maxWidth', content_min_width - 2);
           });
 
-          // Adjust the outer section container width to match
-          // the width of the title and content
-          section.css('maxWidth', title_width + content_min_width);
         } else {
           regions.each(function () {
             var region = $(this),
@@ -393,6 +392,7 @@
 
     small : function (el) {
       var settings = $.extend({}, this.settings, this.data_options(el));
+
       if (this.is_horizontal_tabs(el)) {
         return false;
       }
@@ -405,7 +405,7 @@
       if ($('html').hasClass('ie8compat')) {
         return true;
       }
-      return $(this.scope).width() < 768;
+      return $(this.scope).width() < settings.small_breakpoint;
     },
 
     off : function () {

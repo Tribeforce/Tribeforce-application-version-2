@@ -23,7 +23,7 @@
         $.extend(true, this.settings, method);
       }
 
-      if (typeof method != 'string') {
+      if (typeof method !== 'string') {
 
         if (!this.settings.init) {
           this.events();
@@ -120,8 +120,9 @@
     },
 
     css : function (dropdown, target) {
+      var offset_parent = dropdown.offsetParent();
       // temporary workaround until 4.2
-      if (/body/i.test(dropdown.offsetParent()[0].nodeName)) {
+      if (offset_parent.length > 0 && /body/i.test(dropdown.offsetParent()[0].nodeName)) {
         var position = target.offset();
         position.top -= dropdown.offsetParent().offset().top;
         position.left -= dropdown.offsetParent().offset().left;
@@ -170,6 +171,8 @@
       $(window).off('.fndtn.dropdown');
       $('[data-dropdown-content]').off('.fndtn.dropdown');
       this.settings.init = false;
-    }
+    },
+
+    reflow : function () {}
   };
 }(Foundation.zj, this, this.document));

@@ -80,7 +80,9 @@
     @endif
     {{HTML::script('/js/script.js')}}
     <script>
-      $(document).foundation('topbar section', {callback: accordeonSlide}, function(response) {
+      $(document).foundation('topbar section',
+                             {callback: accordeonSlide, small_breakpoint: 520},
+                             function(response) {
         console.log(response.errors);
       });
     </script>

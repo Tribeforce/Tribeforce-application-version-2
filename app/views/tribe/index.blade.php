@@ -14,9 +14,9 @@
       <input type="text" placeholder="@lang('forms.filter')" class="right">
     </div>
   </div>
-  <div class="section-container auto contain-to-grid" data-section data-options="deep_linking: true; one_up: false">
+  <div class="section-container auto" data-section="">
     @foreach(User::getAllTypes() as $key => $type)
-    <section>
+    <section class="section">
       <div class="title" data-section-title><a href="#{{$type}}">@lang("ui.users.type.$key")</a></div>
       <div class="content" data-slug="{{$type}}" data-section-content>
         <ul class="small-block-grid-1 large-block-grid-2" data-section-content>
