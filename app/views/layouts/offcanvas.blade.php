@@ -81,7 +81,10 @@
     {{HTML::script('/js/script.js')}}
     <script>
       $(document).foundation('topbar section',
-                             {callback: accordeonSlide, small_breakpoint: 520},
+                             { deep_linking: true,
+                               one_up: false,
+                               callback: accordeonSlide,
+                               small_breakpoint: 520},
                              function(response) {
         console.log(response.errors);
       });

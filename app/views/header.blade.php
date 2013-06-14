@@ -9,18 +9,6 @@
       <a href="/" class="left logo">
         {{ HTML::image('/images/logo.png', 'Tribeforce logo') }}
       </a>
-<!--
-      {{ HTML::linkAction('ApplicationController@getLogout', trans('ui.logout'),
-      array(), array('class' => 'logout has-tip right', 'data-tooltip' => '',
-      'title' => trans('ui.logout'))) }}
-
-      {{ HTML::linkAction('ApplicationController@getSettings', trans('ui.settings'),
-      array(), array('class' => 'settings has-tip right', 'data-tooltip' => '',
-      'title' => trans('ui.settings'))) }}
-      <span class="right">
-        {{ trans('ui.greeting', array('name' => User::current()->first_name)) }}
-      </span>
--->
     </li>
     <li class="toggle-topbar menu-icon">
       <a href="#"><span>Menu</span></a>
@@ -31,22 +19,5 @@
       <li class="divider"></li>
       @include('menu')
     </ul>
-<!--
-    <ul class="right">
-      <li class="divider"></li>
-      <li class="greeting">
-        {{ HTML::linkAction('ApplicationController@getLogout', trans('ui.logout'),
-        array(), array('class' => 'logout has-tip right', 'data-tooltip' => '',
-        'title' => trans('ui.logout'))) }}
-
-        {{ HTML::linkAction('ApplicationController@getSettings', trans('ui.settings'),
-        array(), array('class' => 'settings has-tip right', 'data-tooltip' => '',
-        'title' => trans('ui.settings'))) }}
-        <span class="right">
-          {{ trans('ui.greeting', array('name' => User::current()->first_name)) }}
-        </span>
-      </li>
-    </ul>
--->
   </section>
 </nav>
