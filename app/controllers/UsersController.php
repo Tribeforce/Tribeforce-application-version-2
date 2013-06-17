@@ -116,7 +116,7 @@ PRIVATE
       $user = User::find($id);
       return View::make("users.$caller")->with(array(
         'd' => $user,
-        'title' => trans("ui.users.title_$caller", array('name' => $user->full_name())),
+        'title' => trans("ui.users.title_$caller", array('name' => $user->full_name)),
       ));
     } else {
       return View::make("users.$caller");
@@ -182,7 +182,7 @@ PRIVATE
 
     // Set the normal fields
     foreach($input as $name => $value) {
-      $user->$name = $value;
+      $user->$name = e($value);
     }
 
     if($new) {
@@ -218,10 +218,10 @@ PRIVATE
     $user->save();
 
     if($new) {
-      Messages::status('ui.created', array('name' => $user->full_name()));
+      Messages::status('ui.created', array('name' => $user->full_name));
       return Redirect::action('TribeController@getIndex');
     } else {
-      Messages::status('ui.updated', array('name' => $user->full_name()));
+      Messages::status('ui.updated', array('name' => $user->full_name));
       return Redirect::action('TribeController@getDetails', $id);
     }
   }

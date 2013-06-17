@@ -14,7 +14,7 @@
       <input type="text" placeholder="@lang('forms.filter')" class="right">
     </div>
   </div>
-  <div class="section-container auto" data-section="">
+  <div class="section-container auto" data-section>
     @foreach(User::getAllTypes() as $key => $type)
     <section class="section">
       <div class="title" data-section-title><a href="#{{$type}}">@lang("ui.users.type.$key")</a></div>
@@ -23,15 +23,11 @@
           @if(!empty($d[$key]))
           @foreach($d[$key] as $person)
             <li>
-              <a href="{{action('TribeController@getDetails', array($person->id))}}" class="avatar">
-                @if(empty($person->avatar))
-                <image src="/images/avatar.png">
-                @else
-                <image src="/files/{{$person->avatar}}.small">
-                @endif
+              <a href="{{action('TribeController@getDetails', array($person->id))}}">
+                @include('field', array('name' => 'avatar', 'd' => $person))
               </a>
-              <div class="full_name">{{$person->full_name()}}</div>
-              <div class="title">Title</div>
+              @include('field', array('name' => 'full_name', 'd' => $person))
+              <div class="occupation">Occupation</div>
             </li>
           @endforeach
           @endif

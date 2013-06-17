@@ -6690,7 +6690,7 @@ body {
   font-family: "Titillium Web", Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
+  line-height: 1.5em;
   position: relative;
 }
 
@@ -6949,18 +6949,23 @@ div.switch input:last-of-type + label {
 }
 
 /*** FORM FIELDS ***/
-/* line 247, ../../app/theme/sass/app.scss */
+/* line 248, ../../app/theme/sass/app.scss */
+form .actions a:not([class*="foundicon-"]) {
+  display: block;
+}
+
+/* line 253, ../../app/theme/sass/app.scss */
 fieldset {
   -webkit-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s;
   transition: all 1s;
 }
-/* line 250, ../../app/theme/sass/app.scss */
+/* line 256, ../../app/theme/sass/app.scss */
 fieldset legend {
   cursor: pointer;
 }
-/* line 254, ../../app/theme/sass/app.scss */
+/* line 260, ../../app/theme/sass/app.scss */
 fieldset.collapsed {
   border-left: none;
   border-right: none;
@@ -6969,18 +6974,18 @@ fieldset.collapsed {
   padding-bottom: 0;
 }
 
-/* line 264, ../../app/theme/sass/app.scss */
+/* line 270, ../../app/theme/sass/app.scss */
 [class*=form-field].mandatory label::after {
   content: '*';
 }
 
-/* line 270, ../../app/theme/sass/app.scss */
+/* line 276, ../../app/theme/sass/app.scss */
 .form-field-image img {
   float: right;
   width: 6.25em;
 }
 
-/* line 278, ../../app/theme/sass/app.scss */
+/* line 284, ../../app/theme/sass/app.scss */
 .picker div,
 .picker select {
   box-sizing: content-box;
@@ -6989,17 +6994,17 @@ fieldset.collapsed {
 /*******************************************************************************
 PAGES
 *******************************************************************************/
-/* line 290, ../../app/theme/sass/app.scss */
+/* line 296, ../../app/theme/sass/app.scss */
 #login .header {
   margin-bottom: 0.625em;
 }
 
-/* line 295, ../../app/theme/sass/app.scss */
+/* line 301, ../../app/theme/sass/app.scss */
 #dashboard {
   text-align: center;
   text-transform: uppercase;
 }
-/* line 299, ../../app/theme/sass/app.scss */
+/* line 305, ../../app/theme/sass/app.scss */
 #dashboard a {
   display: block;
   background-repeat: no-repeat;
@@ -7021,32 +7026,41 @@ PAGES
   -o-transition: background-position 0.2s ease-in;
   transition: background-position 0.2s ease-in;
 }
-/* line 306, ../../app/theme/sass/app.scss */
+/* line 312, ../../app/theme/sass/app.scss */
 #dashboard a:hover {
   background-position-y: 200px;
 }
-/* line 311, ../../app/theme/sass/app.scss */
+/* line 317, ../../app/theme/sass/app.scss */
 #dashboard i {
   display: block;
   font-size: 3.375em;
 }
 
-/* line 320, ../../app/theme/sass/app.scss */
+/* line 326, ../../app/theme/sass/app.scss */
 #tribe-index li {
   border-bottom: 1px solid #cccccc;
   padding: 0;
 }
-/* line 325, ../../app/theme/sass/app.scss */
+/* line 331, ../../app/theme/sass/app.scss */
 #tribe-index .avatar {
   width: 6.25em;
   height: 6.25em;
   float: left;
   margin-right: 10px;
 }
-/* line 332, ../../app/theme/sass/app.scss */
+/* line 338, ../../app/theme/sass/app.scss */
 #tribe-index img {
   height: 100%;
   width: auto;
   margin: auto;
   display: block;
+}
+
+/* line 351, ../../app/theme/sass/app.scss */
+.section-container.auto .content .section-container.auto .content {
+  top: 0px;
+}
+/* line 353, ../../app/theme/sass/app.scss */
+.section-container.auto .content .section-container.auto .content.active {
+  top: -1px;
 }

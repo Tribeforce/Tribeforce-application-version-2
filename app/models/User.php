@@ -69,8 +69,8 @@ class User extends SentryUserModel {
    *
    * @return string
    */
-  public function full_name() {
-    return $this->first_name . " ". $this->last_name;
+  public function getFullNameAttribute() {
+    return $this->first_name . " ". strtoupper($this->last_name);
   }
 
 
@@ -161,13 +161,21 @@ class User extends SentryUserModel {
 
 
   /**
-   * Forget an individual setting
-   *
-   * @param Array $key The name of the setting to get
+   * Set the relation with the company
+   * @return The relation
    */
     public function company() {
       return $this->belongsTo('Company');
     }
+
+  /**
+   * Set the relation with the occupation
+   * @return The relation
+   */
+    public function occupation() {
+      return $this->hasOne('Occupation');
+    }
+
 
 
 

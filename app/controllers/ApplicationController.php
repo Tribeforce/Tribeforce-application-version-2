@@ -85,7 +85,7 @@ class ApplicationController extends BaseController {
   // Show the settings page of the user
   public function getSettings() {
     $user = Sentry::getUser();
-    return Redirect::route('users.show', $user->id);
+    return Redirect::action('TribeController@getDetails', $user->id);
   }
 
 

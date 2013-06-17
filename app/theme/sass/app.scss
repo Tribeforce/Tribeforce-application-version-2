@@ -76,7 +76,7 @@ body {
   font-family: $body-font-family;
   font-weight: $body-font-weight;
   font-style: $body-font-style;
-  line-height: 1;
+  line-height: 1.5em;
   position: relative;
 }
 
@@ -244,6 +244,12 @@ div.switch {
 
 
 /*** FORM FIELDS ***/
+form .actions {
+  a:not([class*="foundicon-"]) {
+    display: block;
+  }
+}
+
 fieldset {
   @include transition;
 
@@ -342,7 +348,12 @@ PAGES
 
 
 
-
+.section-container.auto .content .section-container.auto .content  {
+  top: 0px;
+  &.active {
+    top: -1px;
+  }
+}
 
 
 

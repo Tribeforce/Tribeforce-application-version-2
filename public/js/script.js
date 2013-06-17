@@ -66,5 +66,6 @@ $(document).ready(function() {
 /**** GLOBAL FUNCTIONS ****/
 accordeonSlide = function(options) {
 //  $('.section-container .content').slideUp();
+  console.log(this);
   $('.section-container .active .content').css('display', 'none').slideDown();
 };

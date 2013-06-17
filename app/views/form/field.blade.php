@@ -46,15 +46,18 @@ if($type === 'switch') {
   @endif
 
   <?php // Field ?>
-  @if($type === 'text')
-    {{ Form::text($name, $def, array('placeholder'=>trans("forms.$name"))) }}
+  @if($type === 'text' or $type === 'textarea')
+    {{ Form::$type($name, $def, array('placeholder'=>trans("forms.$name"))) }}
+
   @elseif($type === 'date')
     {{ Form::text($name, "", array(
       'placeholder'=>trans("forms.$name"),
       'data-value'=> str_replace('-', '/', $def),
     )) }}
+
   @elseif($type === 'password')
     {{ Form::$type($name) }}
+
   @elseif($type === 'switch')
     <div class="switch small{{$switch_class}}">
     {{ Form::radio($name, '0', !$default, array('id' => $name)) }}
@@ -63,10 +66,10 @@ if($type === 'switch') {
     {{ Form::label($name.'1', $on) }}
     <span></span>
     </div>
+
   @elseif($type === 'select')
     {{ Form::select($name, $values, $default) }}
-  @elseif($type === 'submit')
-    {{ Form::$type(trans("forms.$name"), array('class' => 'button right')) }}
+
   @elseif($type === 'image')
     @if(empty($def))
     <image src="/images/avatar.png">
@@ -74,6 +77,9 @@ if($type === 'switch') {
     <image src="/files/{{$def}}.small">
     @endif
     {{ Form::file($name) }}
+
+  @elseif($type === 'submit')
+    {{ Form::$type(trans("forms.$name"), array('class' => 'button right')) }}
   @endif
 
 

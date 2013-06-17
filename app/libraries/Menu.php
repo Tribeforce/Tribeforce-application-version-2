@@ -15,7 +15,7 @@ class Menu {
       case 'main':
         $menu = array(
           'tribe' => array(
-            'uri' => 'tribe',
+            'uri' => URL::action('TribeController@getIndex'),
             'icon' => 'gen foundicon-address-book',
           ),
           'roles'    => array(

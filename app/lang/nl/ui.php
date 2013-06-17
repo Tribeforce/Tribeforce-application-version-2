@@ -40,9 +40,11 @@ return array(
   ),
   'created' => ":name is aangemaakt.",
   'updated' => ":name is aangepast.",
-  'administrative' => 'Administratief',
+  'about' => 'Over mij',
   'competencies'   => 'Competencies',
+  'tasks'   => 'Taken',
   'objectives'     => 'Objectieven',
   'vision'         => 'Visie',
+  'occupation'         => 'Bezigheid',
   'back' => 'terug',
 );

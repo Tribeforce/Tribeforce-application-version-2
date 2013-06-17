@@ -14,23 +14,22 @@ Session::forget('remember');
 
 @section('body')
 <div id="login">
-  <div class="row header">
-    <div class="columns small-10 small-centered large-6 large-centered">
-      {{ HTML::image('images/logo.png', 'Tribeforce logo') }}
-
-      @include('messages')
-
-      {{ Form::open(array('url' => 'login')) }}
-        @include('form.field', array('type' => 'text', 'name' => 'email'))
-        @include('form.field', array('type' => 'password', 'name'=>'password'))
-        @include('form.field', $remember_options)
-        {{ link_to_action('ApplicationController@getFacebook',
-                     trans('forms.fb_login'), null, array('class' => 'left button secondary')) }}
-        {{ link_to_action('ApplicationController@getRegister',
-                     trans('forms.register'), null, array('class' => 'left')) }}
-        @include('form.field', array('type' => 'submit', 'name' => 'login'))
-      {{ Form::close() }}
+  {{ Form::open(array('url' => 'login')) }}
+    @include('form.field', array('type' => 'text', 'name' => 'email'))
+    @include('form.field', array('type' => 'password', 'name'=>'password'))
+    @include('form.field', $remember_options)
+    <div class="row">
+      <div class="small-6 columns">
+      @lang('forms.login_with')
+      {{ link_to_action('ApplicationController@getFacebook',
+                   ' ', null, array('class' => 'soc foundicon-facebook')) }}
+      {{ link_to_action('ApplicationController@getRegister',
+                   trans('forms.register'), null, array('class' => 'left')) }}
+      </div>
+      <div class="small-6 columns">
+      @include('form.field', array('type' => 'submit', 'name' => 'login'))
+      </div>
     </div>
-  </div>
+  {{ Form::close() }}
 </div>
 @endsection

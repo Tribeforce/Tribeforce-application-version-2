@@ -9,16 +9,24 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=0" />
 
     <title>{{ $title }}</title>
-    <script src="/js/vendor/custom.modernizr.js"></script>
-    <link rel="stylesheet" href="/css/foundation/icons/general_foundicons.css" />
-    <link rel="stylesheet" href="/css/foundation/icons/general_enclosed_foundicons.css" />
     <link rel="stylesheet" href="/css/foundation/icons/social_foundicons.css" />
-    <link rel="stylesheet" href="/css/foundation/icons/accessibility_foundicons.css" />
     <link rel="stylesheet" href="/css/app.css" />
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,700' rel='stylesheet' type='text/css'>
+    <style>
+    body {
+      padding-top: 10px;
+    }
+    </style>
   </head>
   <body class="{{ page_name() }}">
-    @yield('body')
+    <div class="row header">
+      <div class="columns small-10 small-centered large-6 large-centered">
+        <a href="/">{{ HTML::image('images/logo.png', 'Tribeforce logo') }}</a>
+        @include('messages')
+
+        @yield('body')
+      </div>
+    </div>
 
     <?php //TODO: update zepto or jquery to the latest versions ?>
     <script>
@@ -29,23 +37,11 @@
 
     <?php //TODO: Find and include the foundation.min.js ?>
     <script src="/js/foundation/foundation.js"></script>
-    <script src="/js/foundation/foundation.section.js"></script>
-    <script src="/js/foundation/foundation.joyride.js"></script>
-    <script src="/js/foundation/foundation.clearing.js"></script>
-    <script src="/js/foundation/foundation.magellan.js"></script>
-    <script src="/js/foundation/foundation.tooltips.js"></script>
-    <script src="/js/foundation/foundation.topbar.js"></script>
-    <script src="/js/foundation/foundation.alerts.js"></script>
     <script src="/js/foundation/foundation.forms.js"></script>
-    <script src="/js/foundation/foundation.orbit.js"></script>
-    <script src="/js/foundation/foundation.reveal.js"></script>
-    <script src="/js/foundation/foundation.placeholder.js"></script>
-    <script src="/js/foundation/foundation.dropdown.js"></script>
-    <script src="/js/foundation/foundation.cookie.js"></script>
 
     <script>
+      $('body').css('minHeight', $(window).height() - 10);
       $(document).foundation();
     </script>
-    <script src="/js/script.js"></script>
   </body>
 </html>
