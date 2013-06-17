@@ -43,6 +43,7 @@ return array(
   'about' => 'Over mij',
   'competencies'   => 'Competencies',
   'tasks'   => 'Taken',
+  'evolution'   => 'Evolutie',
   'objectives'     => 'Objectieven',
   'vision'         => 'Visie',
   'occupation'         => 'Bezigheid',

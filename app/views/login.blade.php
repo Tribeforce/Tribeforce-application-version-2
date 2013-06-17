@@ -24,7 +24,7 @@ Session::forget('remember');
       {{ link_to_action('ApplicationController@getFacebook',
                    ' ', null, array('class' => 'soc foundicon-facebook')) }}
       {{ link_to_action('ApplicationController@getRegister',
-                   trans('forms.register'), null, array('class' => 'left')) }}
+                   trans('forms.register')) }}
       </div>
       <div class="small-6 columns">
       @include('form.field', array('type' => 'submit', 'name' => 'login'))

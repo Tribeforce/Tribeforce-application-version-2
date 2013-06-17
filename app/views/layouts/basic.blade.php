@@ -38,6 +38,7 @@
     <?php //TODO: Find and include the foundation.min.js ?>
     <script src="/js/foundation/foundation.js"></script>
     <script src="/js/foundation/foundation.forms.js"></script>
+    <script src="/js/foundation/foundation.alerts.js"></script>
 
     <script>
       $('body').css('minHeight', $(window).height() - 10);

@@ -58,9 +58,6 @@ $(document).ready(function() {
     $('nav.top-bar section.top-bar-section').slideUp();
   }
 
-
-
-
 });
 
 /**** GLOBAL FUNCTIONS ****/

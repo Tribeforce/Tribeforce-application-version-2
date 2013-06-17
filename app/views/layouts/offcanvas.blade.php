@@ -80,7 +80,7 @@
     @endif
     {{HTML::script('/js/script.js')}}
     <script>
-      $(document).foundation('topbar section',
+      $(document).foundation('alerts topbar section',
                              { deep_linking: true,
 //                               one_up: false,
                                callback: accordeonSlide,

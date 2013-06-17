@@ -347,7 +347,7 @@ PAGES
 
 
 
-
+// FIX BUG WITH NESTED SECTIONS
 .section-container.auto .content .section-container.auto .content  {
   top: 0px;
   &.active {
