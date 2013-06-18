@@ -17,6 +17,9 @@ switch($name) {
   case 'avatar':
     $type = 'image';
     break;
+  case 'email':
+    $type = 'email';
+    break;
   default:
     $type = 'all';
 }
@@ -36,7 +39,11 @@ switch($name) {
     @if(isset($label) && $label)
     <h5>@lang("forms.$name")</h5>
     @endif
+    @if($type === 'email')
+    {{HTML::mailto($val, null, array('target' => '_blank'))}}
+    @else
     {{$val}}
+    @endif
   </div>
   @endif
 @endif

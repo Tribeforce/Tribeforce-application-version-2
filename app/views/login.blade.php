@@ -18,7 +18,7 @@ Session::forget('remember');
     @include('form.field', array('type' => 'text', 'name' => 'email'))
     @include('form.field', array('type' => 'password', 'name'=>'password'))
     @include('form.field', $remember_options)
-    <div class="row">
+    <div class="row actions">
       <div class="small-6 columns">
       @lang('forms.login_with')
       {{ link_to_action('ApplicationController@getFacebook',

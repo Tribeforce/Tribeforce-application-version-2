@@ -22,7 +22,7 @@ return array(
   'users' => array(
     'type' => array(
       0 => "Werknemer",
-      1 => "Onafhankelijk",
+      1 => "Zelfstandig",
       2 => "Ex-Werknemer",
     ),
     'title_index' => 'Gebruikers',
@@ -44,8 +44,9 @@ return array(
   'competencies'   => 'Competencies',
   'tasks'   => 'Taken',
   'evolution'   => 'Evolutie',
+  'feedback'   => 'Feedback',
   'objectives'     => 'Objectieven',
   'vision'         => 'Visie',
-  'occupation'         => 'Bezigheid',
+  'occupation'         => 'Wat ik vandaag doe',
   'back' => 'terug',
 );

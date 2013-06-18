@@ -176,6 +176,13 @@ class User extends SentryUserModel {
       return $this->hasOne('Occupation');
     }
 
+  /**
+   * Set the poymorphic relation with the feedback
+   * @return The relation
+   */
+    public function feedbacks() {
+      return $this->morphMany('Feedback', 'source');
+    }
 
 
 

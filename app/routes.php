@@ -13,6 +13,7 @@ use Illuminate\View\Environment;
 
 Route::resource('users', 'UsersController');
 Route::resource('files', 'FilesController');
+Route::resource('feedback', 'FeedbackController');
 
 Route::controller('tribe', 'TribeController');
 

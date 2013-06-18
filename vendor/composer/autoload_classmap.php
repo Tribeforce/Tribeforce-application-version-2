@@ -70,6 +70,7 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'Company' => $baseDir . '/app/models/Company.php',
     'CreateCompaniesTable' => $baseDir . '/app/database/migrations/2013_06_03_222811_create_companies_table.php',
+    'CreateFeedbacks' => $baseDir . '/app/database/migrations/2013_06_17_183423_create_feedbacks.php',
     'CreateOccupations' => $baseDir . '/app/database/migrations/2013_06_17_141241_create_occupations.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'Doctrine\\Common\\Annotations\\Annotation' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',

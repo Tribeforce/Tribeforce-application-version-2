@@ -7064,3 +7064,12 @@ PAGES
 .section-container.auto .content .section-container.auto .content.active {
   top: -1px;
 }
+
+/* line 360, ../../app/theme/sass/app.scss */
+#tribe-index li .feedback {
+  display: none;
+}
+/* line 363, ../../app/theme/sass/app.scss */
+#tribe-index li:hover .feedback {
+  display: inline-block;
+}

@@ -82,7 +82,7 @@
     <script>
       $(document).foundation('alerts topbar section',
                              { deep_linking: true,
-//                               one_up: false,
+                               one_up: false,
                                callback: accordeonSlide,
                                small_breakpoint: 520},
                              function(response) {

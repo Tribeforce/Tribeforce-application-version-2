@@ -58,6 +58,26 @@ $(document).ready(function() {
     $('nav.top-bar section.top-bar-section').slideUp();
   }
 
+
+  $.ajaxSetup({
+    dataType: 'html',
+    statusCode: {  // TODO: Show disappearing message for errors
+      404: function() {
+        alert("page not found");
+      }
+    },
+    success: function(data, status, jqXHR ) {
+
+    }
+  });
+
+  $('a.ajax').click(function(event){
+    event.preventDefault();
+    url = $(this).attr('href');
+    $.ajax(url);
+  });
+
+
 });
 
 /**** GLOBAL FUNCTIONS ****/
@@ -66,3 +86,9 @@ accordeonSlide = function(options) {
   console.log(this);
   $('.section-container .active .content').css('display', 'none').slideDown();
 };
+
+
+/**** AJAX FUNCTIONS ****/
+function feedback() {
+  alert('ttt');
+}

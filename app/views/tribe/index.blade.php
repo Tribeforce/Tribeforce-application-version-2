@@ -28,6 +28,7 @@
               </a>
               @include('field', array('name' => 'full_name', 'd' => $person))
               <div class="occupation">Occupation</div>
+              <a href="/feedback/add/{{$person->id}}" class="ajax feedback button tiny">@lang('ui.feedback')</a>
             </li>
           @endforeach
           @endif
