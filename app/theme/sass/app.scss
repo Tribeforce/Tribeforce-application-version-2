@@ -360,8 +360,11 @@ PAGES
   .feedback {
     display: none;
   }
-  &:hover .feedback {
-    display: inline-block;
+  &:hover {
+    background: $grey_light;
+    .feedback {
+      display: inline-block;
+    }
   }
 }
 

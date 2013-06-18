@@ -7070,6 +7070,10 @@ PAGES
   display: none;
 }
 /* line 363, ../../app/theme/sass/app.scss */
+#tribe-index li:hover {
+  background: #fafafa;
+}
+/* line 365, ../../app/theme/sass/app.scss */
 #tribe-index li:hover .feedback {
   display: inline-block;
 }
