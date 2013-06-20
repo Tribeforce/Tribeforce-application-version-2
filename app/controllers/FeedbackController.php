@@ -53,7 +53,6 @@ class FeedbackController extends \BaseController {
    */
   public function store() {
     $input = Input::all();
-    dpm($input);
     if(Request::ajax()) {
       if(!empty($input['feedback'])) {
         // TODO: Add validation
@@ -68,7 +67,7 @@ class FeedbackController extends \BaseController {
           if(get_class($source) === $class) {
             // Save the feedback and show a message
             $feedback = $source->feedbacks()->save($feedback);
-            $commands = Messages::show('warning', 'ui.feedback.success');
+            $commands = Messages::show('status', 'ui.feedback.success');
           } else {
             $commands = Messages::show('warning', 'ui.feedback.error');
           }
