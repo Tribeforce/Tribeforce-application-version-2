@@ -18,6 +18,7 @@ class AddUserFields extends Migration {
       $table->text('destiny')->after('last_name');
       $table->text('character')->after('last_name');
       $table->text('calling')->after('last_name');
+      $table->dropColumn('address');
     });
   }
 
@@ -34,6 +35,7 @@ class AddUserFields extends Migration {
       $table->dropColumn('destiny');
       $table->dropColumn('character');
       $table->dropColumn('calling');
+      $table->text('address')->after('last_name');
     });
   }
 

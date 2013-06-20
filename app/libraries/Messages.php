@@ -51,8 +51,47 @@ class Messages {
     }
   }
 
+  /**
+   * This function returns the AJAX commands to show a message and hide it again
+   HTML of 1 message adds a message to the session using Session::flash()
+   * @param string $key  The key of the message to be found in the translations
+   * @param string $type The message type (has to be one of $types)
+   * @param array  $params If the translation has parameters, we pass them here
+   * @param string $raw  If set, the value given in $key will be set,
+   *                     bypassing any translation
+   * @return AJAX command
+   */
+
+  public static function show($type, $key, $params = array(), $raw = false) {
+    if(!empty($key) && in_array($type , self::$types)) {
+      $timestamp = time();
+
+      // Add the message
+      $commands[] = array(
+        'method' => 'append',
+        'selector' => '#messages .columns',
+        'html' => html4ajax(View::make('message')->with(array(
+          'type'    => $type,
+          'message' => $raw ? $key : trans($key, $params),
+        )), $timestamp),
+      );
+
+      // Remove the message after some seconds
+      $commands[] = array(
+        'method' => 'remove',
+        'selector' => "#messages .columns .ts-$timestamp",
+        'timer' => 5000,
+      );
+
+      return $commands;
+    } else {
+      throw new \InvalidArgumentException('The second argument is invalid.');
+    }
+  }
+
+
   public static function __callStatic($name, $arguments) {
-    if(in_array($name , self::$types)) {
+    if(in_array($name, self::$types)) {
       if(isset($arguments[1])) {
         self::push($name, $arguments[0], $arguments[1]);
       } else {

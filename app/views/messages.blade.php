@@ -2,17 +2,14 @@
 $messages = Messages::get();  // NULL if it doesn't exist
 ?>
 
-@if(!empty($messages))
 <div id="messages" class="row">
   <div class="columns">
+  @if(!empty($messages))
     @foreach($messages as $type => $typed_messages)
       @foreach($typed_messages as $message)
-        <div data-alert class="{{$type}}">
-          {{ $message }}
-          {{ link_to('#', '&times;', array('class' => 'close')) }}
-        </div>
+        @include('message')
       @endforeach
     @endforeach
+  @endif
   </div>
 </div>
-@endif

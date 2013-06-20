@@ -148,6 +148,12 @@ select {
 Custom Styles
 *******************************************************************************/
 
+/*** GENERAL ***/
+div.ajax {
+  display: none;
+}
+
+
 /*** HEADER ***/
 
 .top-bar {
@@ -356,17 +362,61 @@ PAGES
 }
 
 
-#tribe-index li {
-  .feedback {
-    display: none;
+
+
+#tribe-index {
+  section .content {
+    padding-top: 0;
+    padding-bottom: 0;
   }
-  &:hover {
-    background: $grey_light;
-    .feedback {
-      display: inline-block;
+
+  li {
+    padding-right: $gutter;
+    position: relative;
+
+    & > .actions {
+      display: none;
+      position: absolute;
+      bottom: $gutter;
+      right: $gutter;
+    }
+
+    div.ajax {
+      position: absolute;
+      bottom: $gutter;
+      right: $gutter;
+    }
+
+    textarea {
+      height: emCalc(70px);
+    }
+
+    textarea,
+    form {
+      margin-bottom: 0;
+    }
+
+    .actions * {
+      margin-bottom: 0;
+    }
+
+    .full_name,
+    .occupation,
+    div.ajax {
+      margin-left: emCalc(110px);
+    }
+
+    &:hover {
+      background: $grey_light;
+      & > .actions {
+        display: block;
+      }
     }
   }
+
+
 }
+
 
 
 

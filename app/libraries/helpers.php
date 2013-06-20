@@ -119,6 +119,12 @@ function key_val($prefix, $keys) {
 
 
 
+function html4ajax($html, $timestamp = null) {
+  $classes = isset($timestamp) ? "ajax ts-$timestamp": "ajax";
+  return utf8_encode('<div class="' . $classes . '">' . $html . '</div>');
+}
+
+
 /******************
 PRIVATE
 ******************/

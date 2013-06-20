@@ -22,13 +22,21 @@
         <ul class="small-block-grid-1 large-block-grid-2" data-section-content>
           @if(!empty($d[$key]))
           @foreach($d[$key] as $person)
-            <li>
-              <a href="{{action('TribeController@getDetails', array($person->id))}}">
-                @include('field', array('name' => 'avatar', 'd' => $person))
-              </a>
+            <li class="user-{{$person->id}}">
+              @include('field', array('name' => 'avatar', 'd' => $person))
               @include('field', array('name' => 'full_name', 'd' => $person))
               <div class="occupation">Occupation</div>
-              <a href="/feedback/add/{{$person->id}}" class="ajax feedback button tiny">@lang('ui.feedback')</a>
+              <div class="actions">
+              {{ link_to_route('feedback.create', trans('ui.feedback.name') ,
+                 array(
+                   'source_id'   => $person->id,
+                   'source_type' => 'user',
+                  ),
+                  array('class' => 'ajax feedback button tiny')) }}
+
+              {{ link_to_action('TribeController@getDetails', trans('ui.details'),
+                 array($person->id), array('class' => 'button small details')) }}
+              </div>
             </li>
           @endforeach
           @endif

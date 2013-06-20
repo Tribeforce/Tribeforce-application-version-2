@@ -44,9 +44,15 @@ return array(
   'competencies'   => 'Competencies',
   'tasks'   => 'Taken',
   'evolution'   => 'Evolutie',
-  'feedback'   => 'Feedback',
+  'feedback' => array(
+    'name'    => 'Feedback',
+    'empty'   => 'Een lege feedback wordt niet opgeslaan',
+    'error'   => 'Er was een probleem bij het oplsaan van je feedback',
+    'success' => 'Je feedback is opgeslaan',
+  ),
   'objectives'     => 'Objectieven',
   'vision'         => 'Visie',
   'occupation'         => 'Wat ik vandaag doe',
   'back' => 'terug',
+  'details' => 'Details',
 );

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOccupations extends Migration {
+class CreateFeedbacks extends Migration {
 
   /**
    * Run the migrations.
@@ -12,10 +12,12 @@ class CreateOccupations extends Migration {
    */
   public function up()
   {
-    Schema::create('occupations', function(Blueprint $table)
+    Schema::create('feedbacks', function(Blueprint $table)
     {
       $table->increments('id');
-      $table->string('name', 255);
+      $table->string('feedback');
+      $table->integer('source_id')->unsigned();
+      $table->string('source_type');
       $table->timestamps();
     });
   }
@@ -27,7 +29,7 @@ class CreateOccupations extends Migration {
    */
   public function down()
   {
-    Schema::drop('occupations');
+    Schema::drop('feedbacks');
   }
 
 }

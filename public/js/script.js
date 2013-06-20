@@ -60,22 +60,80 @@ $(document).ready(function() {
 
 
   $.ajaxSetup({
-    dataType: 'html',
+    dataType: 'json',
     statusCode: {  // TODO: Show disappearing message for errors
       404: function() {
         alert("page not found");
       }
     },
     success: function(data, status, jqXHR ) {
+      var timer = 0;
 
+      for(i = 0; i < data.length; i++) {
+        // Set the timer
+        timer = 0;
+        if(data[i].timer !== undefined) {
+          timer = data[i].timer;
+        }
+
+        // Set the selector
+        selector = data[i].selector;
+
+        switch(data[i].method) {
+          case 'append':
+            $(selector).append(data[i].html);
+            $(selector + ' div.ajax').slideDown();
+            break;
+          case 'hide':
+            setTimeout(function(s) { s.slideUp(); }, timer, $(selector));
+            break;
+          case 'show':
+            $(selector).softShow();
+            break;
+          case 'remove':
+            setTimeout(function(s) { s.softRemove(); }, timer, $(selector));
+            break;
+        }
+      }
     }
   });
 
-  $('a.ajax').click(function(event){
+  $.fn.softRemove = function() {
+    $(this).slideUp(function() {
+      $(this).remove();
+    });
+  };
+
+  $.fn.softShow = function() {
+    $(this).slideDown();
+    // Unset the display so it takes the CSS rules
+    $(this).css('display', '');
+  };
+
+  // Make sure all AJAX links are handled using AJAX
+  $('body').delegate('a.ajax', 'click', function(event){
     event.preventDefault();
     url = $(this).attr('href');
-    $.ajax(url);
+    // A cancel has to remove what has been added by AJAX
+    if($(this).hasClass('cancel')) {
+      $(this).parents('.ajax').softRemove();
+      $(this).parents('li').find('.actions').softShow();
+    } else { // Normal case
+      $.ajax(url);
+    }
   });
+
+
+  // TRIBE INDEX
+  $('#tribe-index li')
+    .delegate('.ajax input[type=submit]', 'click', function(event){
+      event.preventDefault();
+      $form = $(this).parents('form');
+      url = $form.attr('action');
+      data = $form.serialize();
+
+      $.post(url, data);
+    });
 
 
 });
@@ -86,9 +144,3 @@ accordeonSlide = function(options) {
   console.log(this);
   $('.section-container .active .content').css('display', 'none').slideDown();
 };
-
-
-/**** AJAX FUNCTIONS ****/
-function feedback() {
-  alert('ttt');
-}

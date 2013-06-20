@@ -9,6 +9,7 @@ This template expects following variables:
   - $sl: show_label indicates if label needs to be shown or not. TRUE or FALSE
   - $classes: Classes to be set on the container
   - $default: The default value
+  - $size: size of button for submit type
 
 The label will be taken from the language file lang/<language>/forms.php
 */
@@ -18,7 +19,8 @@ $classes = isset($classes) ? " $classes" : '';
 $classes = "form-field-$type name-$name".$classes;
 $classes = $errors->has($name) ? "$classes error" : $classes;
 $show_label = isset($sl) && !$sl ? false : true;
-if($type === 'submit') $show_label = false;
+if($type === 'submit' or $type === 'hidden') $show_label = false;
+$size = isset($size) ? " $size" : '';
 
 // Set the default value
 if($type === 'switch') {
@@ -46,8 +48,11 @@ if($type === 'switch') {
   @endif
 
   <?php // Field ?>
-  @if($type === 'text' or $type === 'textarea')
+  @if($type === 'text' or $type === 'hidden')
     {{ Form::$type($name, $def, array('placeholder'=>trans("forms.$name"))) }}
+
+  @elseif($type === 'textarea')
+    {{ Form::$type($name, $def, array('placeholder' => trans("forms.$name"), 'rows' => 2)) }}
 
   @elseif($type === 'date')
     {{ Form::text($name, "", array(
@@ -79,7 +84,7 @@ if($type === 'switch') {
     {{ Form::file($name) }}
 
   @elseif($type === 'submit')
-    {{ Form::$type(trans("forms.$name"), array('class' => 'button right')) }}
+    {{ Form::$type(trans("forms.$name"), array('class' => 'button right' . $size, 'name' => $name)) }}
   @endif
 
 

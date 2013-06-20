@@ -347,6 +347,8 @@ return array(
     'Doctrine\\DBAL\\Types\\VarDateTimeType' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Types/VarDateTimeType.php',
     'Doctrine\\DBAL\\Version' => $vendorDir . '/doctrine/dbal/lib/Doctrine/DBAL/Version.php',
     'FacebookStrategy' => $vendorDir . '/opauth/facebook/Opauth/Strategy/Facebook/FacebookStrategy.php',
+    'Feedback' => $baseDir . '/app/models/Feedback.php',
+    'FeedbackController' => $baseDir . '/app/controllers/FeedbackController.php',
     'FilesController' => $baseDir . '/app/controllers/FilesController.php',
     'GoogleStrategy' => $vendorDir . '/opauth/google/GoogleStrategy.php',
     'HomeController' => $baseDir . '/app/controllers/HomeController.php',
